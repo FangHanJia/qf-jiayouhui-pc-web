@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>商品列表</title>
+    <link rel="stylesheet" type="text/css" href="../css/base.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../css/goodslist.css" />
+    <script type="text/javascript" src="../lib/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="../js/header.js"></script>
+    <script type="text/javascript" src="../js/goodslist.js"></script>
+</head>
+<body>
+    <div class="box">
+        <!-- 头部 -->
+        <header class="header" id="header"></header>
+        <!-- 主体内容 -->
+        <main class="main cont">
+            <section class="search-list">
+                <!-- 左边商品 -->
+                <article class="fl main-l" id="main-l">
+                    <h2><a href>全部商品</a></h2>
+                    <div class="term" id="term">
+                        <dl class="term-top">
+                            <dt>分类</dt>
+                            <dd>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                            </dd>
+                            <span >更多</span>
+                        </dl>
+                        <dl class="term-top">
+                            <dt>分类</dt>
+                            <dd>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                                <a href>全部</a>
+                            </dd>
+                            <span >更多</span>
+                        </dl>
+                    </div>
+                    <div class="filter">
+                        <ul>
+                            <li class="">综合</li>
+                            <li>销量<i></i></li>
+                            <li class="curr">人气<i></i></li>
+                            <li >价格</li>
+                            <li class="on curr">
+                                <input type="text" id="min-price" placeholder="￥"/>
+                                <span>-</span>
+                                <input type="text" id="max-price" placeholder="￥"/>
+                                <a id="btn-price-search">确认</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- <ul class="goods">
+                        <li>
+                            <a href>
+                                <img src="../img/goods_img1.jpg"  />
+                                <b>科沃斯机器人20周年家有特供组</b>
+                                <p>
+                                    <i>￥2999</i>￥1269
+                                </p>
+                                <font>
+                                    月销378件
+                                </font>
+                            </a>
+                        </li>
+                         <li>
+                            <a href>
+                                <img src="../img/goods_img1.jpg"  />
+                                <b>科沃斯机器人20周年家有特供组</b>
+                                <p>
+                                    <i>￥2999</i>￥1269
+                                </p>
+                                <font>
+                                    月销378件
+                                </font>
+                            </a>
+                        </li>
+                        <li>
+                            <a href>
+                                <img src="../img/goods_img1.jpg"  />
+                                <b>科沃斯机器人20周年家有特供组</b>
+                                <p>
+                                    <i>￥2999</i>￥1269
+                                </p>
+                                <font>
+                                    月销378件
+                                </font>
+                            </a>
+                        </li>
+                        <li>
+                            <a href>
+                                <img src="../img/goods_img1.jpg"  />
+                                <b>科沃斯机器人20周年家有特供组</b>
+                                <p>
+                                    <i>￥2999</i>￥1269
+                                </p>
+                                <font>
+                                    月销378件
+                                </font>
+                            </a>
+                        </li>
+                    </ul> -->
+                    <!-- <div class="page">
+                        <span class="page-num">
+                            <a href class="curr"
+                             id="page-prev">上一页</a>
+                            <a href class="curr">1</a>
+                            <a href>2</a>
+                            <a href>3</a>
+                            <a href>4</a>
+                            
+                            <a href id="page-next">下一页</a>
+                        </span>
+                        <span class="page-set">
+                            <em>
+                                共<i id="page-total">5</i>页
+                                <input type="text" value="1" id="page-count"/>
+                            </em>
+                            <a href id="btn-set">确定</a>
+                        </span>
+                    </div> -->
+                </article>
+
+                <!-- 右边热销 -->
+                <aside class="fr hot-sale" id="hot-floor1">
+                    
+                </aside>
+            </section>
+            <!-- 猜你喜欢 -->
+            <section class="count-down cont" id="love">
+                <div class="count-title " id="love-title"></div>
+                <div class="count-content" id="love-content"></div>
+            </section>
+        </main>
+        <!-- 底部 -->
+        <footer class="footer" id="footer"></footer>
+    </div>
+</body>
+</html>

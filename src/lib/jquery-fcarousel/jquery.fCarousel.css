@@ -1,0 +1,21 @@
+.fcarousel{position:relative;width:810px;height:320px;overflow:hidden;
+  cursor:pointer;}
+.fcarousel img{display: block;}
+.fcarousel ul{position:absolute;overflow:hidden;list-style: none;
+  padding:0;margin:0;}
+.fcarousel ul.horizontal li{float:left;}
+.fcarousel ul.fade li{position:absolute;left:0;top:0;}
+.fcarousel .page{position:absolute;left:50%;bottom:0;padding:10px;transform:translateX(-50%);}
+.fcarousel .page span{display:inline-block;margin:0 5px;width:16px;
+  height:16px;line-height:16px;background-color:rgba(0,0,0,.6);font-size:12px;
+  text-align:center;color:#fff;border-radius: 50%;
+  box-shadow:0 0 10px rgba(0,0,0,.5);}
+.fcarousel .page span.active{background-color: rgba(255,0,0,.8);}
+/* 左右箭头 */
+.fcarousel .arrow{display:block;width:30px;height:60px;position:absolute;font-weight:normal;
+  top:50%;transform:translateY(-50%);font-size:24px;color:#fff;background-color:rgba(0,0,0,.4);
+  text-decoration:none;text-align:center;line-height:60px;}
+.fcarousel .fprev{left:0;}
+.fcarousel .fprev:hover{background-color:rgba(0,0,0,1);}
+.fcarousel .fnext{right:0;}
+.fcarousel .fnext:hover{background-color:rgba(0,0,0,1);}

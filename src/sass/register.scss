@@ -1,0 +1,74 @@
+// 主体
+.box .main{
+    height:402px;width:1040px;overflow:hidden;
+    background:fff;padding:80px;
+    .fl{
+        width:590px;overflow:hidden;
+        .register{
+            li{
+                overflow:hidden;height:40px;line-height:40px;
+                margin-bottom:20px;
+                b{
+                    display:block;width:80px;font-size:14px;
+                    color:#666;float:left;text-align:right;
+                    margin-right:12px;
+                    i{
+                        font-family:'宋体';color:#dc0f50;
+                        font-size:14px;margin-right:3px;
+                    }
+                }
+                input{
+                    width:263px;height:20px;padding:9px 20px;
+                    border:1px solid #d6d6d6;color:#666;
+                    float:left;margin-right:15px;
+                }
+                input.s{
+                    border-color:#e92d2f;
+                }
+                em{
+                    display:block;height:20px;
+                    float:left;margin-top:10px;
+                }
+                em.corr{
+                    width:20px;
+                    background:url('../img/correct_bg.png') no-repeat;
+                }
+                em.error{
+                    font-size:14px;color:#e92d2f;
+                    width:auto;padding-left:22px;
+                    line-height:14px;
+                    background:url('../img/error_bg.png') no-repeat;
+                }
+            }
+        }
+        p{
+            overflow:hidden;margin-top:-15px;text-align:right;
+            padding-right:193px;line-height:48px;color:#666;
+            font-size:14px;height:48px;margin-bottom:20px;
+            input{
+                margin:0 5px 0 0 ;position:relative;top:-1px;
+            }
+            a{display:inline;color:#666;font-size:14px;}
+            button{
+                width:305px;float:right;height:40px;
+                line-height:40px;text-align:center;
+                font-size:18px;color:#fff;
+                background:#dc0f50;
+            }
+        }
+        font{
+            display:block;line-height:20px;text-align:right;
+            text-decoration:underline;
+            padding-right:193px;
+            a{color:#666;font-size:16px;}
+            a:hover{color:#c00;}
+        }
+    }
+
+
+    .fr{
+        width:448px;height:336px;overflow:hidden;
+
+    }
+    
+}

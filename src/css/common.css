@@ -1,0 +1,580 @@
+.box .footer {
+  overflow: hidden;
+  background: #fff;
+  height: 368px;
+}
+
+.box .footer .warrant {
+  overflow: hidden;
+  margin: 20px auto 45px auto;
+}
+
+.box .footer .warrant li {
+  height: 54px;
+  padding: 0 25px 0 82px;
+  float: left;
+  background: url("../img/warrant_icon.png") no-repeat 15px 0;
+}
+
+.box .footer .warrant li b {
+  display: block;
+  line-height: 22px;
+  padding-top: 5px;
+  font-size: 16px;
+  color: #333;
+}
+
+.box .footer .warrant li i {
+  display: block;
+  line-height: 18px;
+  font-size: 12px;
+  color: #999;
+}
+
+.box .footer .warrant li + li {
+  border-left: 1px solid #d6d6d6;
+}
+
+.box .footer .warrant .l2 {
+  background-position: 15px -55px;
+}
+
+.box .footer .warrant .l3 {
+  background-position: 15px -110px;
+}
+
+.box .footer .warrant .l4 {
+  background-position: 15px -165px;
+}
+
+.box .footer .warrant .l5 {
+  background-position: 15px -220px;
+}
+
+.box .footer .links {
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+.box .footer .links .links-l {
+  width: 860px;
+  padding-left: 78px;
+  overflow: hidden;
+}
+
+.box .footer .links .links-l dl {
+  width: 20%;
+  float: left;
+  overflow: hidden;
+}
+
+.box .footer .links .links-l dl dt {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 30px;
+}
+
+.box .footer .links .links-l dl dt a {
+  color: #666;
+}
+
+.box .footer .links .links-l dl dt a:hover {
+  color: #F60242;
+}
+
+.box .footer .links .links-l dl dd {
+  font-size: 12px;
+  color: #999;
+  line-height: 22px;
+}
+
+.box .footer .links .links-l dl dd a {
+  color: #999;
+}
+
+.box .footer .links .links-l dl dd a:hover {
+  color: #F60242;
+}
+
+.box .footer .links .links-r {
+  overflow: hidden;
+  width: 210px;
+  padding-right: 50px;
+}
+
+.box .footer .links .links-r .erweima {
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.box .footer .links .links-r .erweima li {
+  width: 79px;
+  float: left;
+  line-height: 25px;
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+  font-weight: bold;
+  margin-right: 26px;
+}
+
+.box .footer .links .links-r .erweima li img {
+  width: 79px;
+  height: 79px;
+}
+
+.box .footer .links .links-r .links-tel {
+  padding-left: 35px;
+  overflow: hidden;
+  background: url("../img/login_tel.png") no-repeat;
+}
+
+.box .footer .links .links-r .links-tel b {
+  line-height: 26px;
+  display: block;
+  font-size: 20px;
+  color: #666;
+  font-weight: bold;
+}
+
+.box .footer .links .links-r .links-tel i {
+  display: block;
+  font-size: 12px;
+  color: #999;
+  line-height: 14px;
+  margin-top: -3px;
+}
+
+.box .footer .copyright {
+  background: #333;
+  padding: 10px 0;
+}
+
+.box .footer .copyright p {
+  line-height: 26px;
+  color: #999;
+  padding: 0 5px;
+  font-size: 12px;
+}
+
+.box .footer .copyright p a {
+  color: #999;
+}
+
+.box .header .top-nav .top-right li .show .delta, .box .header .logo .shopping-cart .goods-list .delta {
+  width: 0;
+  height: 0;
+  border-right: 6px solid #fff;
+  border-bottom: 6px solid #fff;
+  border-left: 6px solid transparent;
+  border-top: 6px solid transparent;
+  position: absolute;
+  top: -12px;
+  right: 20px;
+}
+
+html, body {
+  width: 100%;
+}
+
+.box {
+  min-width: 1200px;
+}
+
+.box .fixed {
+  position: fixed;
+  top: 45%;
+  right: 0;
+  width: 60px;
+  height: 200px;
+  z-index: 250;
+}
+
+.box .fixed li {
+  margin-bottom: 10px;
+}
+
+.box .fixed li a {
+  display: block;
+  height: 60px;
+  background: url("../img/icon_bg.png") no-repeat;
+  position: relative;
+}
+
+.box .fixed li a .app {
+  text-align: center;
+  display: none;
+  position: absolute;
+  top: 0px;
+  right: 74px;
+  z-index: 1000;
+  padding: 14px 13px 0 13px;
+  width: 122px;
+  height: 164px;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+}
+
+.box .fixed li a .app img {
+  width: 121px;
+  height: 121px;
+}
+
+.box .fixed li a .app em {
+  font-size: 16px;
+  color: #333;
+  line-height: 44px;
+}
+
+.box .fixed li a .app i {
+  display: inline-block;
+  width: 11px;
+  height: 14px;
+  position: absolute;
+  top: 30px;
+  left: 148px;
+  background: url("../img/li_right.png") no-repeat;
+}
+
+.box .fixed li a:hover {
+  background: url("../img/icon_bg2.png") no-repeat;
+}
+
+.box .fixed li a:hover .app {
+  display: block;
+}
+
+.box .fixed li:nth-child(2) a {
+  background-position: left -70px;
+}
+
+.box .fixed li:nth-child(3) a {
+  background-position: left -140px;
+}
+
+.box .header {
+  height: 204px;
+  background: #fff;
+  border-bottom: 2px solid #F60242;
+}
+
+.box .header .top-nav {
+  height: 32px;
+  background: #E7E6E3;
+}
+
+.box .header .top-nav a {
+  display: line-block;
+  height: 32px;
+  line-height: 32px;
+  padding: 0 10px;
+  font-size: 12px;
+  color: #666560;
+}
+
+.box .header .top-nav a:hover {
+  color: #F60242;
+  text-decoration: underline;
+}
+
+.box .header .top-nav .top-right {
+  height: 32px;
+}
+
+.box .header .top-nav .top-right li {
+  float: left;
+  position: relative;
+}
+
+.box .header .top-nav .top-right li .icon_phone {
+  display: inline-block;
+  width: 14px;
+  height: 18px;
+  background: url("../img/sprits.png") no-repeat 0 0;
+  position: absolute;
+  top: 9px;
+  left: 2px;
+}
+
+.box .header .top-nav .top-right li .icon_weixin {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url("../img/sprits.png") no-repeat -20px 0;
+  position: absolute;
+  top: 9px;
+  left: -2px;
+}
+
+.box .header .top-nav .top-right li .show {
+  width: 150px;
+  background: #fff;
+  position: absolute;
+  top: 32px;
+  left: -120px;
+  border-top: none;
+  border: 1px solid #ccc;
+  border-top: 0 none;
+  text-align: center;
+  padding: 10px 10px;
+  z-index: 200;
+}
+
+.box .header .top-nav .top-right li .show img {
+  width: 140px;
+}
+
+.box .header .top-nav .top-right li .show p {
+  font-size: 18px;
+  line-height: 44px;
+}
+
+.box .header .top-nav .top-right li .show_phone {
+  height: 180px;
+  display: none;
+}
+
+.box .header .top-nav .top-right li .show_weixin {
+  display: none;
+}
+
+.box .header .top-nav .top-right li .show_weixin p {
+  border-bottom: 1px solid #E7E6E3;
+}
+
+.box .header .top-nav .top-right li .show_weixin p:nth-of-type(2) {
+  border-bottom: 0 none;
+}
+
+.box .header .top-nav .top-right li:nth-child(10) a {
+  padding: 0 18px;
+}
+
+.box .header .top-nav .top-right li:nth-child(11) a {
+  padding: 0 18px;
+}
+
+.box .header .top-nav .top-right li:nth-child(4) a:hover {
+  color: #666560;
+  text-decoration: none;
+}
+
+.box .header .top-nav .top-right li:nth-child(5) a:hover {
+  color: #666560;
+  text-decoration: none;
+}
+
+.box .header .top-nav .top-right li:nth-child(7) a:hover {
+  color: #666560;
+  text-decoration: none;
+}
+
+.box .header .top-nav .top-right .count, .box .header .top-nav .top-right .coupon {
+  color: #F60242;
+}
+
+.box .header .top-nav .top-right li:nth-child(9) a:hover {
+  color: #666560;
+  text-decoration: none;
+}
+
+.box .header .top-nav .top-right .count, .box .header .top-nav .top-right .coupon {
+  color: #F60242;
+}
+
+.box .header .logo {
+  height: 100px;
+  background: #fff;
+  padding-top: 30px;
+}
+
+.box .header .logo .cont {
+  background: #fff;
+  height: 100px;
+}
+
+.box .header .logo .logo-l {
+  width: 350px;
+  height: 50px;
+}
+
+.box .header .logo .logo-form .input-group {
+  width: 500px;
+}
+
+.box .header .logo .logo-form .input-group .keyword {
+  border: 2px solid #F60242;
+  width: 390px;
+  height: 44px;
+  border-right: 0 none;
+  padding-left: 10px;
+  font-size: 16px;
+}
+
+.box .header .logo .logo-form .input-group .btnSearch {
+  width: 98px;
+  height: 48px;
+  background: #F60242;
+  color: #fff;
+  font-size: 18px;
+}
+
+.box .header .logo .logo-form .input-group .btnSearch:hover {
+  opacity: 0.8;
+}
+
+.box .header .logo .logo-form .choice li {
+  float: left;
+}
+
+.box .header .logo .logo-form .choice li a {
+  padding: 0 8px;
+  font-size: 14px;
+  line-height: 44px;
+  color: #9A9791;
+}
+
+.box .header .logo .logo-form .choice li a:hover {
+  color: #F60242;
+}
+
+.box .header .logo .logo-form .choice li:first-child a {
+  color: #F60242;
+}
+
+.box .header .logo .shopping-cart {
+  width: 90px;
+  height: 44px;
+  border: 1px solid #E7E6E3;
+  margin-left: 156px;
+  position: relative;
+  padding-left: 30px;
+  text-align: center;
+  line-height: 44px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.box .header .logo .shopping-cart .cart-img {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  background: url("../img/sprits.png") no-repeat -40px 0;
+  position: absolute;
+  top: 10px;
+  left: 6px;
+}
+
+.box .header .logo .shopping-cart .goods-nums {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background: #F60242;
+  position: absolute;
+  top: -9px;
+  right: -9px;
+  border-radius: 50%;
+  font-size: 12px;
+  line-height: 18px;
+  color: #fff;
+}
+
+.box .header .logo .shopping-cart .goods-list {
+  position: relative;
+  background: #fff;
+  width: 320px;
+  height: 200px;
+  top: 2px;
+  left: -230px;
+  border: 1px solid #E7E6E3;
+  z-index: 200;
+  display: none;
+}
+
+.box .header .logo .shopping-cart .goods-list .delta {
+  right: 41px;
+}
+
+.box .header .logo .shopping-cart .goods-list::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-right: 8px solid #E7E6E3;
+  border-bottom: 6px solid #E7E6E3;
+  border-left: 6px solid transparent;
+  border-top: 6px solid transparent;
+  position: absolute;
+  top: -13px;
+  right: 40px;
+}
+
+.box .header .main-nav {
+  height: 42px;
+}
+
+.box .header .main-nav .cont {
+  height: 42px;
+}
+
+.box .header .main-nav .nav1 {
+  display: inline-block;
+  width: 214px;
+  height: 42px;
+  color: #fff;
+  line-height: 42px;
+  background: #323534;
+  padding-left: 20px;
+  position: relative;
+  margin-right: 30px;
+}
+
+.box .header .main-nav .nav1 .nav2 {
+  width: 232px;
+  height: 562px;
+  background: #FFF;
+  border: 1px solid #E7E6E3;
+  border-top: 0 none;
+  position: absolute;
+  left: 0px;
+  top: 44px;
+  z-index: 200;
+}
+
+.box .header .main-nav .nav1 .nav2 li a {
+  display: block;
+  font-size: 14px;
+  line-height: 40px;
+  text-indent: 20px;
+  color: #323534;
+}
+
+.box .header .main-nav .nav1 .nav2 li a:hover {
+  background: #dc0f50;
+  color: #fff;
+}
+
+.box .header .main-nav .nav1.cur {
+  background: #333 url(../img/nav_b_bg.jpg) no-repeat 203px center;
+}
+
+.box .header .main-nav .nav-c li {
+  float: left;
+}
+
+.box .header .main-nav .nav-c li a {
+  display: inline-block;
+  height: 42px;
+  color: #323534;
+  font-size: 18px;
+  line-height: 42px;
+  padding: 0 20px;
+}
+
+.box .header .main-nav .nav-c li a:hover {
+  color: #F60242;
+}
+
+.box .header .main-nav .nav-c li:first-child a {
+  color: #F60242;
+}

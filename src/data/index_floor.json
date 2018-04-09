@@ -1,0 +1,16 @@
+[
+    {
+        "bigimg":"img/floor_1_img.jpg",
+        "icon1":"img/floor_1_icon_1.jpg",
+        "icon2":"img/floor_1_icon_2.jpg",
+        "icon3":"img/floor_1_icon_3.jpg",
+        "icon4":"img/floor_1_icon_4.jpg",
+        "icon5":"img/floor_1_icon_5.jpg",
+        "icon6":"img/floor_1_icon_6.jpg",
+        "banner1":"../img/floor_1_banner_img1.jpg",
+        "banner2":"../img/banner_img3.jpg",
+        "ad1":"img/floor_1_ad_img1.jpg",
+        "ad2":"img/floor_1_ad_img2.jpg",
+        "ad3":"img/floor_1_ad_img3.jpg"
+    }
+]

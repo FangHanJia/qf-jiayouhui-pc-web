@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>家有汇-用户注册界面</title>
+    <link rel="stylesheet" type="text/css" href="../css/base.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../css/register.css" />
+    <script type="text/javascript" src="../lib/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="../js/header.js"></script>
+    <script type="text/javascript" src="../js/register.js"></script>
+</head>
+<body>
+    <div class="box">
+        <!-- 头部 -->
+        <header class="header" id="header"></header>
+        
+        <!-- 主体 -->
+        <main class="cont main">
+            <div class="fl ">
+                <ul class="register">
+                    <li>
+                        <b> <i>*</i>手机号 </b>
+                        <input type="text" id="phone-num"
+                         placeholder="请输入11个手机号码"/>
+                        <em id="show-phone" class="corr"></em>
+                    </li>
+                    <li>
+                        <b> <i>*</i>图片验证码 </b>
+                        <input type="text" id="code" 
+                        placeholder="请输入图片验证码"/>
+                        <em id="show-code" class="error">验证码错误</em>
+                    </li>
+                    <li>
+                        <b> <i>*</i>设置密码 </b>
+                        <input type="password" id="pass1" 
+                        placeholder="请输入6-16个字符，不能添加空格哦"/>
+                        <em id="show-pass1" class="error"></em>
+                    </li>
+                    <li>
+                        <b> <i>*</i>确认密码 </b>
+                        <input type="password" id="pass2" 
+                        placeholder="请输入确认密码"/>
+                        <em id="show-pass2" class="error"></em>
+                    </li>
+                    <li>
+                        <b> <i>*</i>验证码 </b>
+                        <input type="text" id=""/>
+                        <em id="show-phone" class="error"></em>
+                    </li>
+                </ul>
+                <p>
+                    <label for="">
+                        <input type="checkbox" id="btnAgree"
+                         checked/>
+                        我已阅读并同意
+                        <a href=>《会员注册协议》</a>
+                        <a href>《隐私保护政策》</a>
+                    </label>
+                </p>
+                <p><button id="btnReg">注册</button></p>
+                <font>
+                    <a href>我已注册，立即登陆</a>
+                </font>
+
+            </div>
+            <div class="fr">
+                <a href>
+                    <img src="../img/login_img.jpg" />
+                </a>
+            </div>
+        </main>
+
+        <!-- 底部 -->
+        <footer class="footer" id="footer"></footer>
+    </div>
+</body>
+</html>
