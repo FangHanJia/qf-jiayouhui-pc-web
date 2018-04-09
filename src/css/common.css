@@ -539,6 +539,7 @@ html, body {
   left: 0px;
   top: 44px;
   z-index: 200;
+  display: none;
 }
 
 .box .header .main-nav .nav1 .nav2 li a {

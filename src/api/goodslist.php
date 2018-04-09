@@ -49,6 +49,7 @@
             // 转为json字符串
             echo json_encode($arr,JSON_UNESCAPED_UNICODE);
         }
+        
             
             
     }

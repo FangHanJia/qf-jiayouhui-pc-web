@@ -69,6 +69,8 @@ jQuery(function($){
         showNav();
         showCart();
         showGoods();
+       
     });
+});    
 
-});
+    
