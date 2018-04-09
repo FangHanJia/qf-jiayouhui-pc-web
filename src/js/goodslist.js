@@ -204,23 +204,7 @@ require(['config'],function(){
             }
         }
 
-        // 封一个导航条显示隐藏函数
-
-        // window.onload = function (){
-        //     let $nav1 = $('#nav1');
-        //     let $nav2 = $('#nav2');
-        //     $nav1.addClass('cur');
-                
-        //     $nav2.css({display:'none'})
-        //     $nav1.on('mouseover',function(){
-        //         $nav2.show();
-        //         $(this).removeClass('cur');
-
-        //     }).on('mouseleave',function(){
-        //         $nav2.hide();
-        //         $nav1.addClass('cur');
-        //     });
-        // }
+        
         // 封一个发送分页的函数
         function send(pageNo){
                 $.ajax({
@@ -230,7 +214,6 @@ require(['config'],function(){
                     }
                 })
                 .then(function(data){
-                    console.log(JSON.parse(data));
                     let res = JSON.parse(data);
                     initGoods(res.g);
                 });
@@ -238,7 +221,6 @@ require(['config'],function(){
         // 操作分页
         let $page = $('#main-l');
         $page.on('click','.page-num a',function(){
-            console.log(this);
             let pageNo = this.innerText;
             send(pageNo);
         })
@@ -253,11 +235,124 @@ require(['config'],function(){
                 return;
             }
             send($num);
-            console.log(this,$num,$total);
         });
 
         // 商品排序
-        let $filter = $('#filter');
+        // let $filter = $('#filter');
+        let $last = $('.on');
+        let $filter = $last.siblings();
         console.log($filter);
+        $filter.on('click',function(){
+            // 排他
+            $(this).addClass('curr');
+            $(this).siblings().removeClass('curr');
+            console.log();
+            let $type = $(this).text();
+            $.ajax({
+                url:'../api/goodslist.php',
+                data:{
+                    type:$type
+                }
+            })
+            .then(function(data){
+                let res = JSON.parse(data);
+                initGoods(res.g);
+            });
+        });
+        // 封一个价格搜索的函数
+        function searchPrice(){
+            let $btnSearch = $('#btn-price-search');
+            // 获取输入的值
+           
+            $btnSearch.on('click',function(){
+                let _min = $('#min-price').val();
+                let _max = $('#max-price').val();
+                if(_min ==0 || _max ==0){
+                    return;
+                }
+                console.log($btnSearch,_min,_max);
+                $.ajax({
+                    url:'../api/goodslist.php',
+                    data:{
+                        type:'搜索',
+                        min:_min,
+                        max:_max
+                    }
+                })
+                .then(function(data){
+                    console.log(data);
+                    let res = JSON.parse(data);
+                    initGoods(res.g);
+                });
+            });
+
+        }
+        searchPrice();
+        
+
+        // 商品选择
+        let $term = $('#term');
+        $term.on('click','a',function(){
+            console.log($(this).text());
+            $(this).addClass('active');
+            $(this).siblings().removeClass('active');
+            let $name = $(this).text();
+            $.ajax({
+                url:'../api/goodslist.php',
+                data:{
+                    type:'选择',
+                    name:$name
+                }
+            })
+            .then(function(data){
+                let res =JSON.parse(data);
+                console.log(res.g);
+                initGoods(res.g);
+            });
+        });
+
+       // 封一个更多操作函数
+        function showMore(name){
+            let type = '#btn-'+name;
+            let $btn = $(type);
+            let $par = $btn.closest('.term-top');
+            $par.css({height:58});
+            $btn.on('click',function(){
+                if($par.height() == 58){
+                    $par.animate({height:116});
+                    $(this).addClass('curr');
+                    $(this).text('收起');
+                }else{
+                    $par.animate({height:58});
+                    $(this).removeClass('curr');
+                    $(this).text('更多');
+                }
+            });
+        }
+        showMore('up');
+        showMore('down');
+
+        // 封一个导航条显示隐藏函数
+        this.timer = setInterval(function(){
+            console.log($('#nav1'));
+            let $nav1 = $('#nav1');
+            let $nav2 = $('#nav2');
+            $nav1.addClass('cur');
+                
+            $nav2.css({display:'none'})
+            $nav1.on('mouseover',function(){
+                $nav2.show();
+                $(this).removeClass('cur');
+
+            }).on('mouseleave',function(){
+                $nav2.hide();
+                $nav1.addClass('cur');
+            });
+            if($('#nav1')){
+                clearInterval(this.timer);
+            }
+        },500);
+
+
     });
 });

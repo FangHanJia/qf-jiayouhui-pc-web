@@ -32,11 +32,13 @@
                             display:inline-block;color:#666;
                             font-size:14px;padding:0 5px;
                             margin:10px 35px 10px 10px ;
-                            line-height:16px;
+                            line-height:16px;cursor:pointer;
                         }
+                        a.active{color:red;}
+                        a:hover{color:#dc0f50;}
                     }
                     span{
-                        position:absolute;bottom:15px;right:10px;
+                        position:absolute;bottom:20px;right:6px;
                         line-height:16px;font-size:12px;
                         display:block;height:16px;cursor:pointer;
                         padding-right:16px;
