@@ -25,6 +25,7 @@ jQuery(function($){
     // 封一个商品界面函数
     function initGoods(res){
         console.log(res);
+        let $list = $('.list');
         let $mainL = $('#main-l');
         // 创建商品容器ul
         let $goods = $('<ul></ul>');
@@ -48,11 +49,11 @@ jQuery(function($){
         // 添加到界面
         $goods.html('');
         $goods.append($res);
-        $mainL.append($goods);
+        $list.html('');
+        $list.append($goods);
 
         // 创建分页界面
-        let $page = $('<div></div>');
-        $page.addClass('page');
+        let $page = $('.page');
         let $span = $('<span></span>');
         $span.addClass('page-num');
         // 创建分页：用总数除以数量
@@ -83,7 +84,6 @@ jQuery(function($){
                 <a href="javasript:void(0);" id="btn-set">确定</a>`;
         $span2.append(em);
         $page.append($span2);
-        $mainL.append($page);
     }
 
 
@@ -254,8 +254,6 @@ jQuery(function($){
             send($num);
             console.log(this,$num,$total);
         });
-
-
     }
 
 });
