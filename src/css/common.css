@@ -483,7 +483,7 @@ html, body {
   position: relative;
   background: #fff;
   width: 320px;
-  height: 200px;
+  height: 400px;
   top: 2px;
   left: -230px;
   border: 1px solid #E7E6E3;
@@ -493,6 +493,25 @@ html, body {
 
 .box .header .logo .shopping-cart .goods-list .delta {
   right: 41px;
+}
+
+.box .header .logo .shopping-cart .goods-list .ul-box li {
+  height: 68px;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 10px 10px;
+  text-align: left;
+}
+
+.box .header .logo .shopping-cart .goods-list .ul-box li img {
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin-right: 10px;
+}
+
+.box .header .logo .shopping-cart .goods-list .ul-box li .des {
+  line-height: 16px;
+  font-size: 14px;
 }
 
 .box .header .logo .shopping-cart .goods-list::before {

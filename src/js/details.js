@@ -1,5 +1,5 @@
 require(['config'],function(){
-    require(['jquery','header','fzoom'],function(){
+    require(['jquery','header','fzoom','common'],function(){
         // 获取url
         let url = location.search;
         // 截取数据
@@ -68,14 +68,87 @@ require(['config'],function(){
             // 月销量
             let $saleCount = $('.sale-count');
             $saleCount.children('span').text(res[0].salecount+' 件');
+            // 商品数量
+            let $buyCount = $('#buy-count');
 
-            
+            // 封一个商品数量加减函数
+            function goodsNum(){
+                let $number = $('.number');
+                let $jian = $('#jian');
+                let $add = $('#add');
+
+                _buyCount = $buyCount.val();
+                // 数量加减操作
+                $jian.on('click',function(){
+                    // 获取输入框的值
+                    _buyCount--;
+                    if(_buyCount <=1){
+                        _buyCount =1;
+                    }
+                    $buyCount.val(_buyCount);
+                    console.log(_buyCount);
+                });
+                $add.on('click',function(){
+                    // 获取输入框的值
+                    _buyCount++;
+                    $buyCount.val(_buyCount);
+                    console.log(_buyCount);
+                });
+            }   
+            goodsNum();
+            // 获取商品对象写入cookie,添加到购物车
+            let $add2car = $('.add2car');
+            $add2car.on('click',function(){
+                console.log($buyCount.val());
+                let cookieObj = {
+                    id:res[0].id,
+                    ourprice:res[0].ourprice,
+                    saleprice:res[0].saleprice,
+                    des:res[0].des,
+                    imgurl:res[0].imgurl,
+                    value:$buyCount.val()
+                    
+                }
+                // 将数据传给购物车函数
+                add2Car(cookieObj);
+            });
+        }
+        // 封一个添加到购物车函数
+        function add2Car(obj){
+            // 写入先读取
+            let goodslist = Cookie.get('goodslist') || [];
+            if(typeof goodslist == 'string'){
+                goodslist = JSON.parse(goodslist);
+            }
+
+            // 判断商品的数量
+            let guid = obj.id;
+            let idx;
+            let has = goodslist.some(function(g,i){
+                idx = i;
+                return g.guid === guid;
+            });
+             if(has){
+                //存在相同商品则获取qty
+                goodslist[idx].qty = Number(goodslist[idx].qty)+obj.value*1;
+            }else{
+                //将数据添加到一个对象中
+                let good = {
+                    guid:obj.id,
+                    img:obj.imgurl,
+                    saleprice:obj.saleprice,
+                    ourprice:obj.ourprice,
+                    des:obj.des,
+                    qty:obj.value
+                }
+                goodslist.push(good);
+            }
+            // 存储到cookie中
+            document.cookie = 'goodslist='+JSON.stringify(goodslist)+';path=/';
+            readCookie();
         }
 
-        // 封一个添加到购物车函数
-        function add2Cart(){
-            console.log(666666);
-        } 
+        
 
         // 封一个tab参数切换函数
         function tabToggle(){

@@ -4,7 +4,7 @@
 // 2、使用
 require(['config'],function(){
 
-    require(['jquery','header'],function($){
+    require(['jquery','header','common'],function($){
 
         // 通过Ajax向后端获取数据初始化界面
         $.ajax({

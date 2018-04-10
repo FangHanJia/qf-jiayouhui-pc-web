@@ -5,7 +5,8 @@ require.config({
         jquery:'../lib/jquery-3.2.1',
         header:'../js/header',
         fcarousel:'../lib/jquery-fcarousel/jquery.fCarousel',
-        fzoom:'../lib/jquery-fzoom/jquery.fZoom'
+        fzoom:'../lib/jquery-fzoom/jquery.fZoom',
+        common:'common'
     },
     // 配置依赖
     shim:{

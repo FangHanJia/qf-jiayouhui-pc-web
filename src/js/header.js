@@ -1,3 +1,4 @@
+let readCookie;
 jQuery(function($){
     let type = 'index';
     // 封一个点击回到顶部效果函数
@@ -69,8 +70,39 @@ jQuery(function($){
         showNav();
         showCart();
         showGoods();
-       
+        readCookie();
     });
+
+    // 封一个读取cookie函数
+    readCookie = function (){
+        //获取cookie
+        let goodslist = Cookie.get('goodslist') || [];
+        if(typeof goodslist === 'string'){
+            goodslist = JSON.parse(goodslist);
+        }
+        console.log(goodslist);
+        // 获取购物车的元素
+        let $shopCart = $('.shopping-cart');
+        let $goosList = $shopCart.find('.goods-list');
+        let $goodsNums = $shopCart.find('.goods-nums');
+        console.log(goodslist,$shopCart);
+        let $ul = $('<ul></ul>');
+        $ul.addClass('ul-box');
+        let topQty = 0;
+        let $res = goodslist.map(function(goods){
+            topQty += goods.qty;console.log(goods.qty);
+            return `<li>
+                        <img src="../${goods.img}"/>
+                        <p class="des"> ${goods.des}</p >
+                        <p>${goods.ourprice}&times;${goods.qty}</p>
+                    </li>`;
+        });
+        console.log(topQty)
+        $goodsNums.text(topQty);
+        $ul.append($res);
+        $goosList.html('');
+        $goosList.append($ul);
+    }
 });    
 
     

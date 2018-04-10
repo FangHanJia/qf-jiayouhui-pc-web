@@ -1,6 +1,6 @@
 // 引入文件
 require(['config'],function(){
-    require(['jquery','fcarousel','header'],function($){
+    require(['jquery','fcarousel','header','common'],function($){
         // 主体轮播图函数
         function mainBanner(){
             let banner_focus = $('#banner-focus');
