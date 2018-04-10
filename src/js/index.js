@@ -130,7 +130,7 @@ require(['config'],function(){
             // 获取数据生成html结构
             let $html = res.map(function(item){
                 return `<li id=${item.id}>
-                            <a href="">
+                            <a >
                                 <img src=${item.imgurl} />
                                 <span>${item.off}折</span>
                                 <b>${item.des}</b>
@@ -294,17 +294,18 @@ require(['config'],function(){
             $is.eq(1).addClass('i2').text('2');
             $is.eq(2).addClass('i3').text('3');
         }
-        // 导航条跳转商品列表页
-        window.onload = function(){
-            let $nav1 = $('#nav1');
-            let $nav2 = $('#nav2');
-            console.log($nav2);
-            $nav1.on('click',function(){
-                location.href = 'html/goodslist.html';
-            });
-            $nav2.on('click','a',function(){
-                location.href = 'html/goodslist.html';
+        
+        
+        // 封一个跳转到详情页函数
+        function toDetals(){
+            let $countContent = $('#count-content');
+            $countContent.on('click','li',function(){
+                let $id = $(this).attr('id');
+                
+                console.log($id);
+                location.href = '../html/detals.html?id='+$id;
             });
         }
+        toDetals();
     });
 });
