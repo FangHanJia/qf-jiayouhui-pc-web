@@ -129,12 +129,12 @@
           
         },
         show(){
-          $big.show();
+          $big.fadeIn();
           $zoom.show();
         },
         // 隐藏函数
         hide(){
-          $big.hide();
+          $big.fadeOut();
           $zoom.hide();
         }
       }

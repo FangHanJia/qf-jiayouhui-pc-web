@@ -22,10 +22,12 @@ require(['config'],function(){
         })
         .then(function(data){
             let res = JSON.parse(data);
+            console.log(res);
             // 提取图片
-            let imgurl = res[0].imgurl;
+            // let imgurl = res[0].imgurl;
             // 放大镜
-            zoom(imgurl);
+            // zoom(imgurl);
+            zoom(res);
             // 商品信息
             showMsg(res);
 
@@ -34,12 +36,11 @@ require(['config'],function(){
         function zoom(i){
             // 图片数据
             // let arr = ['../img/count-down-img11.jpg','../img/count-down-img10.jpg']
-            let arr = [i];
             let $imgBox = $('.img-box');
             let $ul = $('<ul></ul>');
-            let $res = arr.map(function(item){
+            let $res = i.map(function(item){
                 return `<li>
-                            <img src=${item} />
+                            <img src=${item.imgurl} />
                         </li>`;
             });
             // 生成图片列表
@@ -67,7 +68,41 @@ require(['config'],function(){
             // 月销量
             let $saleCount = $('.sale-count');
             $saleCount.children('span').text(res[0].salecount+' 件');
+
+            
         }
+
+        // 封一个添加到购物车函数
+        function add2Cart(){
+            console.log(666666);
+        } 
+
+        // 封一个tab参数切换函数
+        function tabToggle(){
+            // 获取元素
+            let $picBox = $('.pic-box');
+            // 生成跟多参数界面
+            let $textBox = $('.text-box');
+            let $textUl = $('<ul></ul>');
+            for(let i=0;i<6;i++){
+                let $li = $('<li/>');
+                let $p  = $('<p/>');
+                $p.text('【商品编码】 8016481451');
+                $p.appendTo($li);
+                $li.appendTo($textUl);
+            }
+            $textUl.appendTo($textBox);
+
+            let $tabTitle = $('.tab-title');
+            $tabTitle.on('click','li',function(){
+                $(this).addClass('curr');
+                $(this).siblings('li').removeClass('curr');
+
+                $textBox.toggle();
+                $picBox.toggle();
+            });
+        }
+        tabToggle();
 
         // 封一个导航条显示隐藏函数
         this.timer = setInterval(function(){

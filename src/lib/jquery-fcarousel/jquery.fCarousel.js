@@ -110,7 +110,7 @@
           move();
         })
         // 页码事件
-        .on('click','.page span',function(){
+        .on('mouseenter','.page span',function(){
           opt.index = $(this).attr('id');
           console.log(opt.index);
           showAnimate();

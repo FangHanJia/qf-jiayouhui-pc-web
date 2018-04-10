@@ -349,3 +349,67 @@
   color: #c06;
   padding: 5px;
 }
+
+.box .main .tab {
+  overflow: hidden;
+  margin-bottom: 68px;
+}
+
+.box .main .tab .tab-title {
+  width: 320px;
+  height: 50px;
+  border-bottom: none;
+  border: 1px solid #e5e5e5;
+}
+
+.box .main .tab .tab-title li {
+  width: 160px;
+  height: 50px;
+  line-height: 50px;
+  float: left;
+  background: #f5f5f5;
+  color: #333;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.box .main .tab .tab-title li.curr {
+  background: #fff;
+  color: #dc0f50;
+  width: 159px;
+  border-bottom: 1px solid #fff;
+  border-top: 2px solid #dc0f50;
+  border-left: 1px solid #e5e5e5;
+  border-right: 1px solid #e5e5e5;
+  position: relative;
+  top: -1px;
+  margin-left: -1px;
+}
+
+.box .main .tab .tab-content {
+  padding-top: 2px;
+  border: 1px solid #e5e5e5;
+}
+
+.box .main .tab .tab-content .pic-box {
+  overflow: hidden;
+  padding: 25px 50px;
+}
+
+.box .main .tab .tab-content .pic-box img {
+  width: 100%;
+}
+
+.box .main .tab .tab-content .text-box {
+  padding: 40px;
+  min-height: 440px;
+  overflow: hidden;
+  display: none;
+}
+
+.box .main .tab .tab-content .text-box p {
+  line-height: 56px;
+  font-size: 24px;
+  color: #333;
+}
