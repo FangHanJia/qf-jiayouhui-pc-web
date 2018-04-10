@@ -1,0 +1,351 @@
+.box .main .details .show .content .msg .guid b, .box .main .details .show .content .msg .sale-count b, .box .main .details .show .content .msg .gift b, .box .main .details .show .content .msg .number b {
+  font-size: 12px;
+  color: #666;
+  display: block;
+  width: 50px;
+  float: left;
+}
+
+.box .main .details .show .content .msg .guid, .box .main .details .show .content .msg .sale-count, .box .main .details .show .content .msg .gift, .box .main .details .show .content .msg .number {
+  height: 40px;
+  line-height: 22px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #666;
+}
+
+.box .main .details .show .content .msg .style .goods-style .color, .box .main .details .show .content .msg .style .goods-style .size {
+  line-height: 22px;
+  padding: 5px 0;
+  overflow: hidden;
+}
+
+.box .main .details .show .content .msg .style .goods-style .color b, .box .main .details .show .content .msg .style .goods-style .size b {
+  display: block;
+  width: 62px;
+  line-height: 22px;
+  font-size: 12px;
+  color: #666;
+  float: left;
+}
+
+.box .main .details .show .content .msg .style .goods-style .color span, .box .main .details .show .content .msg .style .goods-style .size span {
+  display: block;
+  float: left;
+  font-weight: bold;
+  font-size: 12px;
+  color: #666;
+  padding: 0 10px;
+  border: 1px solid #d6d6d6;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.box .main .details .show .content .msg .style .goods-style .color span:hover, .box .main .details .show .content .msg .style .goods-style .size span:hover {
+  border-color: #dc0f50;
+  color: #dc0f50;
+}
+
+.box .main .details .show .content .msg .style .goods-style .color span.curr, .box .main .details .show .content .msg .style .goods-style .size span.curr {
+  border-color: #dc0f50;
+  color: #dc0f50;
+}
+
+.box .main .details .show .content .msg .list span i, .box .main .details .show .content .msg .list span:nth-of-type(2) i, .box .main .details .show .content .msg .list span:nth-of-type(3) i {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  float: left;
+  background: url("../img/bg_zheng.png") no-repeat left top;
+  background-size: 20px auto;
+}
+
+.box .main {
+  overflow: hidden;
+  position: relative;
+}
+
+.box .main .details h2 {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 15px;
+}
+
+.box .main .details h2 a {
+  cursor: pointer;
+  color: #333;
+  font-size: 12px;
+}
+
+.box .main .details .show {
+  padding: 29px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #d6d6d6;
+  margin-bottom: 10px;
+}
+
+.box .main .details .show .left {
+  width: 545px;
+  overflow: hidden;
+  height: 512px;
+  background: #fff;
+}
+
+.box .main .details .show .left .img-list {
+  width: 64px;
+  float: left;
+  height: 464px;
+}
+
+.box .main .details .show .left .img-list a {
+  display: block;
+  height: 9px;
+  background: url("../img/up_down.png") no-repeat center -21px;
+}
+
+.box .main .details .show .left .img-list a.down {
+  background-position: center -28px;
+}
+
+.box .main .details .show .left .img-list a.up:hover {
+  background-position: center top;
+}
+
+.box .main .details .show .left .img-list a.down:hover {
+  background-position: center -8px;
+}
+
+.box .main .details .show .left .img-list .img-box {
+  height: 444px;
+  position: relative;
+  overflow: hidden;
+}
+
+.box .main .details .show .left .img-list .img-box ul {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.box .main .details .show .left .img-list .img-box ul li {
+  height: 64px;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.box .main .details .show .left .img-list .img-box ul li img {
+  width: 62px;
+  height: 62px;
+  border: 1px solid #fff;
+}
+
+.box .main .details .show .left .img-list .img-box ul li img.curr {
+  border-color: #dc0f50;
+}
+
+.box .main .details .show .left .small {
+  width: 460px;
+  float: right;
+  position: relative;
+}
+
+.box .main .details .show .left .small img {
+  width: 460px;
+}
+
+.box .main .details .show .left .small .zoom {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 1px solid #99C;
+  opacity: 0.5;
+  background-color: #99C;
+  display: none;
+}
+
+.box .main .details .show .left .big {
+  overflow: hidden;
+  width: 460px;
+  height: 460px;
+  border: 1px solid #e5e5e5;
+  position: absolute;
+  z-index: 200;
+  left: 616px;
+  top: 28px;
+  display: none;
+}
+
+.box .main .details .show .left .big img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.box .main .details .show .content {
+  width: 550px;
+  position: relative;
+}
+
+.box .main .details .show .content h3 {
+  color: #333;
+  font-size: 20px;
+  height: 54px;
+  line-height: 30px;
+  padding: 7px 0;
+  border-bottom: 1px solid #d6d6d6;
+}
+
+.box .main .details .show .content .msg {
+  padding: 5px 0;
+}
+
+.box .main .details .show .content .msg .price {
+  line-height: 35px;
+  position: relative;
+}
+
+.box .main .details .show .content .msg .price b {
+  color: #dc0f50;
+  font-size: 30px;
+  margin-right: 8px;
+}
+
+.box .main .details .show .content .msg .price em {
+  display: block;
+  color: #666;
+  font-size: 18px;
+  line-height: 16px;
+  text-decoration: line-through;
+}
+
+.box .main .details .show .content .msg .guid span {
+  padding-left: 15px;
+}
+
+.box .main .details .show .content .msg .sale-count span {
+  padding-left: 15px;
+}
+
+.box .main .details .show .content .msg .gift {
+  overflow: hidden;
+  margin: 8px 0 12px 0;
+}
+
+.box .main .details .show .content .msg .gift span {
+  border: 1px solid #ef823f;
+  font-size: 12px;
+  padding: 2px 5px;
+  margin-left: 15px;
+  color: #ef823f;
+  border-radius: 3px;
+}
+
+.box .main .details .show .content .msg .style {
+  overflow: hidden;
+}
+
+.box .main .details .show .content .msg .number b {
+  width: 62px;
+}
+
+.box .main .details .show .content .msg .number label {
+  display: inline-block;
+  width: 86px;
+  height: 20px;
+  background: red;
+  float: left;
+  border: 1px solid #d6d5d3;
+}
+
+.box .main .details .show .content .msg .number label a {
+  display: block;
+  width: 15px;
+  height: 20px;
+  overflow: hidden;
+  float: left;
+  text-indent: -999em;
+  overflow: hidden;
+  background: url("../img/jia_jian.png") no-repeat;
+}
+
+.box .main .details .show .content .msg .number label a:nth-of-type(2) {
+  background-position: 0 -20px;
+}
+
+.box .main .details .show .content .msg .number label input {
+  width: 44px;
+  height: 20px;
+  padding: 0 5px;
+  border-left: 1px solid #d6d5d3;
+  float: left;
+  text-align: center;
+  line-height: 20px;
+  color: #666;
+  font-size: 12px;
+  border-right: 1px solid #d6d5d3;
+}
+
+.box .main .details .show .content .msg .list {
+  line-height: 19px;
+  overflow: hidden;
+  padding: 7px 0 0 0;
+}
+
+.box .main .details .show .content .msg .list span {
+  display: block;
+  float: left;
+  font-size: 14px;
+  color: #333;
+  margin: 0 26px  8px 0;
+  height: 20px;
+}
+
+.box .main .details .show .content .msg .list span:nth-of-type(2) i {
+  background: url("../img/bg_you.png") no-repeat left top;
+  background-size: 20px auto;
+}
+
+.box .main .details .show .content .msg .list span:nth-of-type(3) i {
+  background: url("../img/bg_7.png") no-repeat left top;
+  background-size: 20px auto;
+}
+
+.box .main .details .show .content .msg .btn {
+  height: 38px;
+  overflow: hidden;
+}
+
+.box .main .details .show .content .msg .btn button {
+  height: 38px;
+  width: 160px;
+  color: #fff;
+  text-align: center;
+  margin-right: 10px;
+  font-size: 16px;
+  line-height: 38px;
+}
+
+.box .main .details .show .content .msg .btn button:nth-of-type(1) {
+  background: #fea829  20px center;
+}
+
+.box .main .details .show .content .msg .btn button:nth-of-type(2) {
+  background: #dc0f50;
+}
+
+.box .main .details .show .content .msg .btn button:hover {
+  opacity: 0.8;
+}
+
+.box .main .details .show .content .msg .btn span {
+  font-size: 12px;
+  line-height: 38px;
+  color: #333;
+  padding-left: 4px;
+}
+
+.box .main .details .show .content .msg .btn span i {
+  color: #c06;
+  padding: 5px;
+}

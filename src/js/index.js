@@ -174,7 +174,7 @@ require(['config'],function(){
                     }else if(index <=0){
                         index = 0;   
                     }
-                    $goodsBox.stop().animate({left:-$len*index},'slow');
+                    $goodsBox.stop().animate({left:-$len*index});
                 }
                 
             }
@@ -197,24 +197,24 @@ require(['config'],function(){
            
             let $r = r.map(function(item){
                 return `<div class="left fl">
-                            <b><a href><img src=${item.bigimg} /></a></b>
+                            <b><a ><img src=${item.bigimg} /></a></b>
                             <p>
-                                <a href>
+                                <a >
                                     <img src=${item.icon1} />
                                 </a>
-                                <a href>
+                                <a >
                                     <img src=${item.icon2} />
                                 </a>
-                                <a href>
+                                <a >
                                     <img src=${item.icon3} />
                                 </a>
-                                <a href>
+                                <a >
                                     <img src=${item.icon4} />
                                 </a>
-                                <a href>
+                                <a >
                                     <img src=${item.icon5} />
                                 </a>
-                                <a href>
+                                <a >
                                     <img src=${item.icon6} />
                                 </a>
                             </p>
@@ -223,17 +223,17 @@ require(['config'],function(){
                                 <div class="floor-1-banner" id="floor-${num}-banner"></div>
                                 <ul class="floor-1-ad">
                                     <li>
-                                        <a href="">
+                                        <a >
                                             <img src=${item.ad1} />
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="">
+                                        <a >
                                             <img src=${item.ad2} />
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="">
+                                        <a >
                                             <img src=${item.ad3} />
                                         </a>
                                     </li>
@@ -277,8 +277,8 @@ require(['config'],function(){
             let idx = 'hot-content'+num
             $hotContent.attr('id',idx);
             let $res = hLen.map(function(item){
-                return `<li>
-                            <a href>
+                return `<li id=${item.id}>
+                            <a >
                                 <i></i>
                                 <img src=${item.imgurl} />
                                 <b>${item.des}</b>
@@ -298,14 +298,43 @@ require(['config'],function(){
         
         // 封一个跳转到详情页函数
         function toDetals(){
+            // 倒计时数据
             let $countContent = $('#count-content');
             $countContent.on('click','li',function(){
                 let $id = $(this).attr('id');
-                
+                let $type = 'index_countdown';
                 console.log($id);
-                location.href = '../html/detals.html?id='+$id;
+                location.href = '../html/details.html?id='+$id+'&type='+$type;
+            });
+
+            // 猜你喜欢数据
+            let $loveContent = $('#love-content');
+            $loveContent.on('click','li',function(){
+                let $id = $(this).attr('id');
+                let $type = 'index_countdown';
+                console.log($id);
+                location.href = '../html/details.html?id='+$id+'&type='+$type;
+            });
+
+            // 热销商品数据
+            let $hots = $('.hot-sale');
+            $hots.on('click','li',function(){
+                let $id = $(this).attr('id');
+                let $type = 'index_hot';
+                console.log($id);
+                location.href = '../html/details.html?id='+$id+'&type='+$type;
             });
         }
         toDetals();
+
+        // 封一个跳转到商品列表页函数
+        function toList(){
+            let $floor = $('.floor-l');
+            console.log($floor);
+            $floor.on('click',function(){
+                 location.href = '../html/goodslist.html';
+            });
+        }
+        toList();
     });
 });

@@ -36,7 +36,7 @@ require(['config'],function(){
             $goods.addClass('goods');
             let $res = res.data.map(function(item){
                 return `<li id=${item.id}>
-                            <a href>
+                            <a >
                                 <img src=${item.imgurl}  />
                                 <b>${item.des}</b>
                                 <p>
@@ -103,8 +103,8 @@ require(['config'],function(){
             let idx = 'hot-content'+num
             $hotContent.attr('id',idx);
             let $res = hLen.map(function(item){
-                return `<li>
-                            <a href>
+                return `<li id=${item.id}>
+                            <a >
                                 <i></i>
                                 <img src=${item.imgurl} />
                                 <b>${item.des}</b>
@@ -154,7 +154,7 @@ require(['config'],function(){
             // 获取数据生成html结构
             let $html = res.map(function(item){
                 return `<li id=${item.id}>
-                            <a href="">
+                            <a >
                                 <img src=${item.imgurl} />
                                 <span>${item.off}折</span>
                                 <b>${item.des}</b>
@@ -198,7 +198,7 @@ require(['config'],function(){
                     }else if(index <=0){
                         index = 0;   
                     }
-                    $goodsBox.stop().animate({left:-$len*index},'slow');
+                    $goodsBox.stop().animate({left:-$len*index});
                 }
                 
             }
@@ -353,6 +353,37 @@ require(['config'],function(){
             }
         },500);
 
+        // 封一个跳转到商品详情函数
+        function toDetails(){
+            // 主要商品数据
+            let $list = $('.list');
+            $list.on('click','li',function(){
+                console.log($(this).attr('id'));
+                let $id = $(this).attr('id');
+                let $type = 'goodslist';
+                console.log($id);
+                location.href = '../html/details.html?id='+$id+'&type='+$type;
+            });
 
+            // 热销商品数据
+            let $hots = $('.hot-sale');
+            $hots.on('click','li',function(){
+                let $id = $(this).attr('id');
+                let $type = 'index_hot';
+                console.log($id);
+                location.href = '../html/details.html?id='+$id+'&type='+$type;
+            });
+
+            // 猜你喜欢数据
+            let $loveContent = $('#love-content');
+            $loveContent.on('click','li',function(){
+                let $id = $(this).attr('id');
+                let $type = 'index_countdown';
+                console.log($id);
+                location.href = '../html/details.html?id='+$id+'&type='+$type;
+            });
+           
+        }
+        toDetails();
     });
 });
