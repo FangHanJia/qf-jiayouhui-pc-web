@@ -80,24 +80,21 @@ jQuery(function($){
         if(typeof goodslist === 'string'){
             goodslist = JSON.parse(goodslist);
         }
-        console.log(goodslist);
         // 获取购物车的元素
         let $shopCart = $('.shopping-cart');
         let $goosList = $shopCart.find('.goods-list');
         let $goodsNums = $shopCart.find('.goods-nums');
-        console.log(goodslist,$shopCart);
         let $ul = $('<ul></ul>');
         $ul.addClass('ul-box');
         let topQty = 0;
         let $res = goodslist.map(function(goods){
-            topQty += goods.qty;console.log(goods.qty);
+            topQty += goods.qty;
             return `<li>
                         <img src="../${goods.img}"/>
                         <p class="des"> ${goods.des}</p >
                         <p>${goods.ourprice}&times;${goods.qty}</p>
                     </li>`;
         });
-        console.log(topQty)
         $goodsNums.text(topQty);
         $ul.append($res);
         $goosList.html('');

@@ -6,9 +6,9 @@
     <link rel="stylesheet" type="text/css" href="../css/base.css" />
     <link rel="stylesheet" type="text/css" href="../css/common.css" />
     <link rel="stylesheet" type="text/css" href="../css/register.css" />
-    <script type="text/javascript" src="../lib/jquery-3.2.1.js"></script>
-    <script type="text/javascript" src="../js/header.js"></script>
-    <script type="text/javascript" src="../js/register.js"></script>
+    <!-- 引入模块 -->
+    <script type="text/javascript" src="../js/require.js" data-main="../js/register.js" ></script>
+   
 </head>
 <body>
     <div class="box">
@@ -17,36 +17,46 @@
         
         <!-- 主体 -->
         <main class="cont main">
-            <div class="fl ">
+            <!-- 遮罩弹窗 -->
+            <div class="mask">
+                <h3>恭喜您成为家有购物的一员！</h3>
+                <p>正在为您跳转到<a href="">登陆</a>界面~~<span id="time">5秒</span></p>
+                
+            </div>
+            <section class="fl ">
                 <ul class="register">
                     <li>
                         <b> <i>*</i>手机号 </b>
                         <input type="text" id="phone-num"
                          placeholder="请输入11个手机号码"/>
-                        <em id="show-phone" class="corr"></em>
+                        <em id="show-phone" ></em>
                     </li>
                     <li>
                         <b> <i>*</i>图片验证码 </b>
                         <input type="text" id="code" 
-                        placeholder="请输入图片验证码"/>
-                        <em id="show-code" class="error">验证码错误</em>
+                        placeholder="请输入图片验证码" class="code"/>
+                        <span class="vcode"></span>
+                        <em id="show-code" ></em>
                     </li>
                     <li>
                         <b> <i>*</i>设置密码 </b>
                         <input type="password" id="pass1" 
                         placeholder="请输入6-16个字符，不能添加空格哦"/>
-                        <em id="show-pass1" class="error"></em>
+                        <em id="show-pass1" ></em>
                     </li>
                     <li>
                         <b> <i>*</i>确认密码 </b>
                         <input type="password" id="pass2" 
                         placeholder="请输入确认密码"/>
-                        <em id="show-pass2" class="error"></em>
+                        <em id="show-pass2" ></em>
                     </li>
                     <li>
                         <b> <i>*</i>验证码 </b>
-                        <input type="text" id=""/>
-                        <em id="show-phone" class="error"></em>
+                        <input type="text" id="yanzhengma" class="yanzhengma"/>
+                        <button class="btnGet">
+                            获取验证码
+                        </button>
+                        <em id="" ></em>
                     </li>
                 </ul>
                 <p>
@@ -60,15 +70,15 @@
                 </p>
                 <p><button id="btnReg">注册</button></p>
                 <font>
-                    <a href>我已注册，立即登陆</a>
+                    <a href="../html/login.html">我已注册，立即登陆</a>
                 </font>
 
-            </div>
-            <div class="fr">
+            </section>
+            <aside class="fr">
                 <a href>
                     <img src="../img/login_img.jpg" />
                 </a>
-            </div>
+            </aside>
         </main>
 
         <!-- 底部 -->

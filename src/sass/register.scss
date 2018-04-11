@@ -2,6 +2,26 @@
 .box .main{
     height:402px;width:1040px;overflow:hidden;
     background:fff;padding:80px;
+    // 遮罩窗
+    .mask{
+        position:fixed;top:50%;left:50%;background:#000;opacity:0.8;
+        width:400px;height:160px;transform:translate(-50%,-50%);
+        border-radius:20px;padding:20px; text-align:center;color:#fff;
+       display:none;
+        h3{
+            line-height:40px;font-size:28px;
+            margin-bottom:80px;
+        }
+        p{
+            line-height:32px;
+            a{
+                color:#dc0f50;text-decoration:underline;
+                line-height:32px;
+            }
+            span{color:red;}
+        }
+
+    }
     .fl{
         width:590px;overflow:hidden;
         .register{
@@ -26,7 +46,7 @@
                     border-color:#e92d2f;
                 }
                 em{
-                    display:block;height:20px;
+                    display:none;height:20px;
                     float:left;margin-top:10px;
                 }
                 em.corr{
@@ -40,6 +60,25 @@
                     background:url('../img/error_bg.png') no-repeat;
                 }
             }
+            li:nth-child(2){
+                .code{width:138px;}
+                .vcode{
+                    display:block;float:left;width:108px;height:38px;
+                    border:1px solid #d6d6d6;margin-right:15px;
+                    font-size:18px;line-height:38px;color:#333;
+                    text-align:center;cursor:pointer;letter-spacing:8px;
+                }
+            }
+            li:last-child{
+                .yanzhengma{width:138px;}
+                .btnGet{
+                    width:110px;height:40px;border:none;font-size:14px;
+                    line-height:40px;text-align:center;
+                    color:#fff;background:#dc0f50;float:left;
+                    margin-right:15px;cursor:pointer;
+                }
+            }
+
         }
         p{
             overflow:hidden;margin-top:-15px;text-align:right;

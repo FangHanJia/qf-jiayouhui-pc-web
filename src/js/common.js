@@ -35,11 +35,11 @@ function randomColor(){
  * @return {String} [返回16进制格式颜色代码]
  */
 function rColor(){
-    var str = '0123456789abcdef';//15
+    var str = '0123456789abcdefghjklmnopqrstuvwxyz';//15
 
-    var res = '#';
+    var res = '';
 
-    for(var i=0;i<6;i++){
+    for(var i=0;i<4;i++){
         res += str[parseInt(Math.random()*str.length)];
     }
 
