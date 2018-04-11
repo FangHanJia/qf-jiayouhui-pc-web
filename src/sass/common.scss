@@ -147,7 +147,7 @@ html,body{width:100%;}
             li{
                 float:left;position:relative;
                 .icon_phone{display:inline-block;width:14px;height:18px;background:url('../img/sprits.png') no-repeat 0 0;position:absolute;top:9px;left:2px;}
-                .icon_weixin{display:inline-block;width:18px;height:18px;background:url('../img/sprits.png') no-repeat -20px 0;position:absolute;top:9px;left:-2px;}
+                .icon_weixin{display:inline-block;width:18px;height:18px;background:url('../img/sprits.png') no-repeat -20px 0;position:absolute;top:9px;left:-10px;}
                 // 二维码
                 .show{
                     width:150px;background:#fff;position:
@@ -177,7 +177,11 @@ html,body{width:100%;}
             .count,.coupon{color:#F60242;} 
             li:nth-child(9) a:hover{color:#666560;text-decoration:none;}
             .count,.coupon{color:#F60242;}
-
+            .sign-out{
+                a{color:#dc0f50;}
+                i{font-size:12px;cursor:pointer;}
+                i:hover{text-decoration:underline;color:#dc0f50;}
+            }
 
         }
     }

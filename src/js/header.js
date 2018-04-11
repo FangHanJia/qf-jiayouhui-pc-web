@@ -1,4 +1,8 @@
+// 商品cookie
 let readCookie;
+
+//用户cookie
+let userCookie;
 jQuery(function($){
     let type = 'index';
     // 封一个点击回到顶部效果函数
@@ -70,10 +74,11 @@ jQuery(function($){
         showNav();
         showCart();
         showGoods();
-        readCookie();
+        userCookie();
+
     });
 
-    // 封一个读取cookie函数
+    // 封一个读取商品cookie函数
     readCookie = function (){
         //获取cookie
         let goodslist = Cookie.get('goodslist') || [];
@@ -81,6 +86,7 @@ jQuery(function($){
             goodslist = JSON.parse(goodslist);
         }
         // 获取购物车的元素
+        let $topCount = $('#top-count');
         let $shopCart = $('.shopping-cart');
         let $goosList = $shopCart.find('.goods-list');
         let $goodsNums = $shopCart.find('.goods-nums');
@@ -96,9 +102,67 @@ jQuery(function($){
                     </li>`;
         });
         $goodsNums.text(topQty);
+        $topCount.text(topQty);
         $ul.append($res);
         $goosList.html('');
         $goosList.append($ul);
+    }
+
+    let timer = setInterval(function(){
+        let $signIn = $('.sign-in');
+        if($signIn){
+            clearInterval(timer);
+            userCookie($signIn);
+        }
+    },500);
+    // 封一个读取用户cookie函数
+    userCookie = function(s){
+        if(s){
+        // 获取顶部元素
+        let $topName = $('#top-name');
+        let $signOut = $('#sign-out');
+        // 读取cookie
+        let userInfo = Cookie.get('userInfo') || [];
+        if(typeof userInfo =='string'){
+            userInfo = JSON.parse(userInfo);
+        }
+        // 判断cookie是否存在
+        if(userInfo.length>0){
+            // 用户名
+            let userName = userInfo[0].phone;
+            if(userName){
+                $topName.hide();
+                let $a = $('<a></a>');
+                let $i = $('<i></i>');
+                $a.html('你好！'+userName);
+                $i.html('退出');
+                $i.addClass('btnOut');
+                $signOut.append($a);
+                $signOut.append($i);
+
+                // 显示购物车cookie
+                readCookie();
+                let $p = $('<p></p>');
+                $p.addClass('name');
+                $p.text('你好！'+userName);
+                s.append($p);
+                s.show();
+                s.next('div').hide();
+            }
+        }
+        // 退出登陆:
+        let $btnOut = $signOut.find('i');
+        $btnOut.on('click',function(){
+            $signOut.hide();
+            $topName.show();
+
+            s.next('div').show();
+            s.hide();
+            // 删除cookie
+            Cookie.remove('userInfo');
+        });
+        }
+
     }
 });    
 

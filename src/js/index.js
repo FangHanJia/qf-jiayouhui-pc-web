@@ -330,7 +330,6 @@ require(['config'],function(){
         // 封一个跳转到商品列表页函数
         function toList(){
             let $floor = $('.floor-l');
-            console.log($floor);
             $floor.on('click',function(){
                  location.href = '../html/goodslist.html';
             });

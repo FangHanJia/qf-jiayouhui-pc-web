@@ -303,7 +303,7 @@ html, body {
   background: url("../img/sprits.png") no-repeat -20px 0;
   position: absolute;
   top: 9px;
-  left: -2px;
+  left: -10px;
 }
 
 .box .header .top-nav .top-right li .show {
@@ -380,6 +380,20 @@ html, body {
 
 .box .header .top-nav .top-right .count, .box .header .top-nav .top-right .coupon {
   color: #F60242;
+}
+
+.box .header .top-nav .top-right .sign-out a {
+  color: #dc0f50;
+}
+
+.box .header .top-nav .top-right .sign-out i {
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.box .header .top-nav .top-right .sign-out i:hover {
+  text-decoration: underline;
+  color: #dc0f50;
 }
 
 .box .header .logo {

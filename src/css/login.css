@@ -1,0 +1,207 @@
+.box .main {
+  padding: 60px 70px 30px 70px;
+  overflow: hidden;
+  width: 1060px;
+}
+
+.box .main .mask {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background: #000;
+  opacity: 0.8;
+  width: 400px;
+  height: 160px;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+  display: none;
+  z-index: 500;
+}
+
+.box .main .mask h3 {
+  line-height: 40px;
+  font-size: 28px;
+  margin-bottom: 80px;
+}
+
+.box .main .mask p {
+  line-height: 32px;
+}
+
+.box .main .mask p a {
+  color: #dc0f50;
+  text-decoration: underline;
+  line-height: 32px;
+}
+
+.box .main .mask p span {
+  color: red;
+}
+
+.box .main .main-left {
+  width: 448px;
+  height: 336px;
+  padding: 40px 0 0 0;
+  overflow: hidden;
+  margin-bottom: 75px;
+}
+
+.box .main .main-left img {
+  width: 448px;
+  height: 336px;
+}
+
+.box .main .main-right {
+  width: 448px;
+  height: 376px;
+  overflow: hidden;
+  margin-bottom: 75px;
+}
+
+.box .main .main-right .login-title {
+  height: 40px;
+  line-height: 40px;
+  overflow: hidden;
+}
+
+.box .main .main-right .login-title a {
+  display: block;
+  width: 50%;
+  text-align: center;
+  float: left;
+  cursor: pointer;
+  font-size: 18px;
+  color: #666;
+}
+
+.box .main .main-right .login-title a i {
+  display: inline-block;
+  height: 38px;
+}
+
+.box .main .main-right .login-title a.curr i {
+  color: #dc0f50;
+  border-bottom: 2px solid #dc0f50;
+}
+
+.box .main .main-right .login-content {
+  margin-top: -1px;
+  overflow: hidden;
+  height: 290px;
+  border: 1px solid #e5e5e5;
+  padding: 45px 0 0 70px;
+}
+
+.box .main .main-right .login-content font {
+  display: none;
+  height: 40px;
+  padding: 0 32px;
+  line-height: 38px;
+  color: #e92d2f;
+  background: url("../img/error_bg.png") no-repeat 9px 50%;
+  font-size: 12px;
+}
+
+.box .main .main-right .login-content ul li {
+  overflow: hidden;
+  height: 40px;
+  position: relative;
+  margin-bottom: 19px;
+}
+
+.box .main .main-right .login-content ul li i {
+  display: block;
+  width: 18px;
+  height: 18px;
+  background: url("../img/icon01.png") no-repeat;
+  position: absolute;
+  top: 11px;
+  left: 11px;
+}
+
+.box .main .main-right .login-content ul li .i2 {
+  background: url("../img/icon02.png") no-repeat;
+}
+
+.box .main .main-right .login-content ul li input {
+  margin-right: 16px;
+  float: left;
+  height: 28px;
+  line-height: 28px;
+  padding: 5px 0 5px 60px;
+  width: 243px;
+  border: 1px solid #d6d6d6;
+  font-size: 14px;
+  color: #666;
+}
+
+.box .main .main-right .login-content ul li input.curr {
+  border-color: #e92d2f;
+}
+
+.box .main .main-right .login-content ul li em {
+  width: 20px;
+  height: 20px;
+  display: none;
+  background: url("../img/correct_bg.png") no-repeat;
+  margin-top: 10px;
+  float: left;
+}
+
+.box .main .main-right .login-content ul .li3 {
+  font-size: 14px;
+  margin-top: -14px;
+}
+
+.box .main .main-right .login-content ul .li3 label {
+  color: #666;
+  font-size: 14px;
+}
+
+.box .main .main-right .login-content ul .li3 label input {
+  width: 13px;
+  height: 13px;
+  border: none;
+  float: left;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.box .main .main-right .login-content ul .li3 a {
+  float: right;
+  padding-right: 70px;
+  color: #666;
+  font-size: 14px;
+}
+
+.box .main .main-right .login-content ul .li3 a:hover {
+  color: #dc0f50;
+}
+
+.box .main .main-right .login-content p {
+  height: 40px;
+  line-height: 40px;
+  padding-right: 70px;
+}
+
+.box .main .main-right .login-content p a {
+  display: block;
+  background: #dc0f50;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.box .main .main-right .login-content p a:hover {
+  opacity: 0.8;
+}
+
+.box .main .main-right .quick {
+  padding-top: 9px;
+  height: 326px;
+  display: none;
+}

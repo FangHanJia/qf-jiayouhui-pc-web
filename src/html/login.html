@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>用户登陆界面</title>
+    <link rel="stylesheet" type="text/css" href="../css/base.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../css/login.css" />
+    <!-- 引入模块 -->
+    <script type="text/javascript" src="../js/require.js" data-main="../js/loign.js"></script>
+</head>
+<body>
+    <div class="box">
+        <!-- 头部 -->
+        <header class="header" id="header"></header>
+
+        <!-- 主体 -->
+        <main class="main cont" id="main">
+            <!-- 遮罩窗 -->
+            <div class="mask">
+                <h3>恭喜您登陆成功！</h3>
+                <p>正在为您跳转到<a href="../index.html">首页</a>界面~~<span id="time">5秒</span></p>
+            </div>
+            <!-- 左侧图片 -->
+            <section class="main-left fl">
+                <a href><img src="../img/login_img.jpg" /></a>
+            </section>
+            
+            <!-- 右侧登陆界面 -->
+            <section class="main-right fr">
+                <div class="login-title">
+                    <a class="curr"><i>用户登陆</i></a>
+                    <a><i>快捷登陆</i></a>
+                </div>
+                <div class="login-content " id="user">
+                    <font id="show-msg">请输入11位有效手机号</font>
+                    <ul>
+                        <li>
+                            <i></i>
+                            <input type="text" placeholder="请输入11位有效手机号" id="phone" />
+                            <em></em>
+                        </li>
+                        <li>
+                            <i class="i2"></i>
+                            <input type="password" placeholder="请输入您的密码" id="password" />
+                            <em></em>
+                        </li>
+                        <li class="li3">
+                            <a href="../html/register.html">新用户注册</a>
+                            <label for="auto-login">
+                                <input type="checkbox" id="auto-login" checked/>
+                                下次自动登陆
+                            </label>
+                        </li>
+                    </ul>
+                    <p>
+                        <a id="btn-login">登陆</a>
+                    </p>
+                </div>
+                <div class="login-content quick" id="quick">
+                    快捷
+                </div>
+            </section>
+        </main>
+        
+        <!-- 尾部 -->
+        <footer class="footer" id="footer"></footer>
+    </div>
+</body>
+</html>
