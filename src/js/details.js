@@ -93,8 +93,9 @@ require(['config'],function(){
             goodsNum();
             // 获取商品对象写入cookie,添加到购物车
             let $add2car = $('.add2car');
-            $add2car.on('click',function(){
-                console.log($buyCount.val());
+            $add2car.on('click',function(e){
+                this.x = e.pageX;
+                this.y = e.pageY;
                 let cookieObj = {
                     id:res[0].id,
                     ourprice:res[0].ourprice,
@@ -104,12 +105,17 @@ require(['config'],function(){
                     value:$buyCount.val()
                     
                 }
-                // 将数据传给购物车函数
-                add2Car(cookieObj);
+                
+
+                let $onImg = $('#small').find('img');
+                let $onUrl = $onImg.attr('src');
+
+                // 将图片传给飞入购物车效果函数
+                fly2Cart(this,this.x,this.y,$onUrl,cookieObj);
             });
         }
         // 封一个添加到购物车函数
-        function add2Car(obj){
+        function add2Cart(obj){
             // 写入先读取
             let goodslist = Cookie.get('goodslist') || [];
             if(typeof goodslist == 'string'){
@@ -143,6 +149,30 @@ require(['config'],function(){
             readCookie();
         }
 
+        // 封一个飞入购物车效果函数
+        function fly2Cart(ele,x,y,imgurl,cookieObj){
+            // 创建图片
+            let $flyImg =$('<img/>');
+            $flyImg.attr('src',imgurl); 
+            $flyImg.css({
+                width:150,
+                height:150,
+                position:'absolute',
+                left:x,
+                top:y-150,
+                borderRadius:50
+
+            });
+            $('body').append($flyImg);
+            $flyImg.animate({top:60,left:1100,width:50,height:50,opacity:0.5},1500);
+            console.log($flyImg);
+            setTimeout(function(){
+                $flyImg.remove();
+                // 将数据传给购物车函数
+                add2Cart(cookieObj);
+            },1500)
+
+        }
         
 
         // 封一个tab参数切换函数

@@ -481,12 +481,12 @@ html, body {
 
 .box .header .logo .shopping-cart .goods-nums {
   display: block;
-  width: 18px;
+  width: 38px;
   height: 18px;
   background: #F60242;
   position: absolute;
   top: -9px;
-  right: -9px;
+  right: -18px;
   border-radius: 50%;
   font-size: 12px;
   line-height: 18px;
