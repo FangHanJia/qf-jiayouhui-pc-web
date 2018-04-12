@@ -1,0 +1,157 @@
+// 行内元素成为块级元素
+%block{display:block;float:left;text-align:center;}
+
+.box .main{
+    .cart{
+        padding:0 30px;width:1140px;overflow:hidden;
+        .cart-title{
+            height:55px;line-height:55px;font-size:12px;color:#333;
+            i{
+                display:block;width:35px;height:16px;line-height:16px;font-size:12px;float:left;
+                background:url('../img/h2_bg.png') no-repeat;
+                padding-left:5px;color:#fff;margin:19px 8px 0 0;
+            }
+        }
+        .cart-content{
+            border:1px solid #d5d5d5;
+            h3{
+                height:46px;border-bottom:1px solid #d5d5d5;
+                background:#f1f1f1;line-height:46px;
+                font-size:12px;
+                label{
+                    @extend %block;
+                    width:96px;
+                    input{margin-right:10px;}
+                }
+                .goods{
+                    @extend %block;
+                    width:560px;
+                }
+                .price{
+                    @extend %block;
+                    width:125px;
+                }
+                .number{
+                    @extend %block;
+                    width:150px;
+                }
+                .sub-total{
+                    @extend %block;
+                    width:105px;
+                }
+                .handle{
+                    @extend %block;
+                    width:102px;
+                }
+            }
+            .goodsList{
+                overflow:hidden;
+                ul{
+                    overflow:hidden;
+                    li{
+                        padding:20px 0;height:100px;
+                        line-height:100px;
+                        border-bottom:1px solid #d5d5d5;
+                        label{
+                           @extend %block;
+                            width:64px;
+                        }
+                        div{
+                            cursor:pointer;
+                            img{
+                                width:100px;height:100px;float:left;
+                                margin-right:10px;
+                            }
+                            p{
+                                width:330px;float:left;line-height:20px;
+                                margin-right:30px;font-size:12px;margin-top:30px;
+                            }
+                            .style{
+                                @extend %block;
+                                width:66px;
+                            }
+                            .ourprice{
+                                @extend %block;
+                                width:80px;margin-top:40px;
+                                margin-left:48px;
+                            }
+                            .num{
+                                @extend %block;
+                                width:86px;padding-left:30px;
+                                margin-top:35px;
+                                label{
+                                    background:#fff;
+                                    border:1px solid #cbcbcb;
+                                    height:24px;width:85px;
+                                    display:inline-block;
+                                    i{
+                                        display:inline-block;
+                                        width:27px;
+                                        height:24px;
+                                        line-height:22px;
+                                        float:left;
+                                        text-align:center;
+                                        font-size:18px;
+                                        color:#333;
+                                    }
+                                    input{
+                                        width:28px;
+                                        float:left;
+                                        border-left:1px solid #eaeaea;
+                                        border-right:1px solid #eaeaea;
+                                        height:24px;
+                                        line-height:24px;
+                                        text-align:center;
+                                    }
+                                }
+                            }
+                            .xiaoji{
+                                @extend %block;
+                                width:50px;padding-left:20px;
+                                margin-top:40px;color:#dc0f50;
+                            }
+                            span{
+                                padding-left:40px;
+                                font-size:14px;
+                                cursor:pointer;
+                            }
+                            span:hover{color:#dc0f50;}
+                        }
+                        div:hover .text{color:#dc0f50;}
+                    }
+                    // 选中时的背景颜色
+                    li.bg{
+                        background:#FFFCE9;
+                    }
+                }
+            }
+        }
+        .goods-handle{
+            background:#fff;margin-bottom:20px;line-height:52px;
+            height:52px;padding:23px 0 23px 0 ;overflow:hidden;
+            .buy span{
+                color:#999;font-size:18px;float:right;line-height:68px;
+                .tatol-nums{
+                    color:#dc0f50;
+                }
+                b{
+                    padding-right:50px;
+                    .tatol-price{
+                        color:#dc0f50;font-size:30px;font-weight:bold;
+                    }
+                }
+                a{
+                    display:inline-block;width:120px;height:55px;
+                    background:#dc0f50;color:#fff;text-align:center;
+                    line-height:55px;
+                }
+                a:hover{opacity:0.8;}
+            }
+            label{
+                margin-right:20px;
+            }
+            a{cursor:pointer;}
+            a:hover{color:#dc0f50;}
+        }
+    }
+}

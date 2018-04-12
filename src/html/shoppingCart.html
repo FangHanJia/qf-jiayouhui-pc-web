@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>购物车</title>
+    <link rel="stylesheet" type="text/css" href="../css/base.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../css/shoppingCart.css" />
+    <!-- 引入模块 -->
+    <script type="text/javascript" src="../js/require.js" data-main="../js/shoppingCart.js"></script>
+</head>
+<body>
+    <div class="box">
+        <!-- 头部 -->
+        <header class="header" id="header"></header>
+        <main class="main cont" id="main">
+            <section class="cart ">
+                <h2 class="cart-title">
+                    <i>包邮</i>
+                    <span>所有商品全场包邮(西藏、新疆、青海地区除外)</span> 
+                </h2>
+                <!-- 商品数据 -->
+                <div class="cart-content">
+                    <h3>
+                        <label for=""><input type="checkbox" id="btnAll" checked/>全选</label>
+                        <span class="goods">商品</span>
+                        <span class="price">单价(元)</span>
+                        <span class="number">数量</span>
+                        <span class="sub-total">小计(元)</span>
+                        <span class="handle">操作</span>
+                    </h3>
+                    <!-- 存放商品数据 -->
+                    <div class="goodsList">
+                    </div>
+                </div> 
+                <div class="goods-handle">
+                    <div class="buy">
+                        <span>
+                            <b>已选择<i class="tatol-nums">4</i>件商品</b>
+                            <b>应付款：<i class="tatol-price">￥224.00</i></b>
+                            <a href="#">去结算</a>
+                        </span>
+                        <!-- <label for="">
+                            <input type="checkbox" id="btnFx"/>
+                        </label> -->
+                        <a id="btnAll">删除选中的商品</a>
+                    </div>
+                </div>    
+            </section>
+        </main>
+        <footer class="footer" id="footer"></footer>
+    </div>
+</body>
+</html>

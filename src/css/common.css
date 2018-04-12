@@ -528,6 +528,21 @@ html, body {
   font-size: 14px;
 }
 
+.box .header .logo .shopping-cart .goods-list .toCart {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 40px;
+  background: #dc0f50;
+  color: #fff;
+}
+
+.box .header .logo .shopping-cart .goods-list .toCart:hover {
+  opacity: 0.8;
+}
+
 .box .header .logo .shopping-cart .goods-list::before {
   content: '';
   display: block;

@@ -10,7 +10,6 @@ require(['config'],function(){
             let arr = url[i].split('=');
             obj[arr[0]] = arr[1];
         }
-        console.log(obj.type,obj.id);
 
         // 像后端获取数据
         $.ajax({
@@ -22,11 +21,8 @@ require(['config'],function(){
         })
         .then(function(data){
             let res = JSON.parse(data);
-            console.log(res);
             // 提取图片
-            // let imgurl = res[0].imgurl;
-            // 放大镜
-            // zoom(imgurl);
+            
             zoom(res);
             // 商品信息
             showMsg(res);
@@ -51,7 +47,6 @@ require(['config'],function(){
 
         // 封一个商品信息函数
         function showMsg(res){
-            console.log(res);
             // 显示标题
             let $des = $('#des');
             $des.text(res[0].des);
@@ -179,7 +174,6 @@ require(['config'],function(){
 
         // 封一个导航条显示隐藏函数
         this.timer = setInterval(function(){
-            console.log($('#nav1'));
             let $nav1 = $('#nav1');
             let $nav2 = $('#nav2');
             $nav1.addClass('cur');

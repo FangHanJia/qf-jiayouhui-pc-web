@@ -82,7 +82,7 @@ require(['config'],function(){
                          // 弹窗操作
                         let $mask = $('.mask');     
                         let $time = $('#time');  
-                        let s=5;   
+                        let s=2;   
                         $mask.fadeIn(function(){
                             this.timer = setInterval(function(){
                                 s--;

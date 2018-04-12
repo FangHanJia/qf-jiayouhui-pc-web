@@ -257,6 +257,11 @@ html,body{width:100%;}
                         }
                     } 
                 } 
+                .toCart{
+                    position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
+                    width:100px;height:40px;background:#dc0f50;color:#fff;
+                }
+                .toCart:hover{opacity:0.8;}
 
                 
             }

@@ -241,7 +241,6 @@ require(['config'],function(){
         // let $filter = $('#filter');
         let $last = $('.on');
         let $filter = $last.siblings();
-        console.log($filter);
         $filter.on('click',function(){
             // 排他
             $(this).addClass('curr');
@@ -334,7 +333,6 @@ require(['config'],function(){
 
         // 封一个导航条显示隐藏函数
         this.timer = setInterval(function(){
-            console.log($('#nav1'));
             let $nav1 = $('#nav1');
             let $nav2 = $('#nav2');
             $nav1.addClass('cur');

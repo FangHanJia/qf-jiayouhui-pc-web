@@ -1,7 +1,6 @@
 // 放大镜插件
 ;(function($){
   // 测试
-  console.log(666);
   // 扩张jQuery插件
   $.fn.fZoom = function(options){
 
@@ -102,7 +101,7 @@
           })
           .on('mouseleave',function(){
             zoom.hide();
-          }).on('mousemove',function(e){console.log(66)
+          }).on('mousemove',function(e){
             let x =e.pageX - $small.offset().left - $zoom.outerWidth()/2;
             let y =e.pageY - $small.offset().top - $zoom.outerHeight()/2;
 

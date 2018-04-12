@@ -3,6 +3,9 @@ let readCookie;
 
 //用户cookie
 let userCookie;
+
+
+
 jQuery(function($){
     let type = 'index';
     // 封一个点击回到顶部效果函数
@@ -74,7 +77,7 @@ jQuery(function($){
         showNav();
         showCart();
         showGoods();
-        userCookie();
+        // userCookie();
 
     });
 
@@ -91,6 +94,9 @@ jQuery(function($){
         let $goosList = $shopCart.find('.goods-list');
         let $goodsNums = $shopCart.find('.goods-nums');
         let $ul = $('<ul></ul>');
+        let $toCart = $('<a href="../html/shoppingCart.html"></a>');
+        $toCart.addClass('toCart');
+        $toCart.text('去购物车');
         $ul.addClass('ul-box');
         let topQty = 0;
         let $res = goodslist.map(function(goods){
@@ -106,6 +112,7 @@ jQuery(function($){
         $ul.append($res);
         $goosList.html('');
         $goosList.append($ul);
+        $goosList.append($toCart);
     }
 
     let timer = setInterval(function(){
@@ -159,7 +166,7 @@ jQuery(function($){
             s.next('div').show();
             s.hide();
             // 删除cookie
-            Cookie.remove('userInfo');
+            // Cookie.remove('userInfo');
         });
         }
 
