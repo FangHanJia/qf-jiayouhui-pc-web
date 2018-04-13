@@ -1,0 +1,36 @@
+{
+  "name": "projects",
+  "version": "1.0.0",
+  "description": "sass gulp git jquery",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "browser-sync": "^2.23.6",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.2.1",
+    "gulp-uglify": "^3.0.0",
+    "pump": "^3.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FangHanJia/projects.git"
+  },
+  "keywords": [
+    "sass",
+    "gulp",
+    "git",
+    "jquery",
+    "js"
+  ],
+  "author": "fanghanjia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FangHanJia/projects/issues"
+  },
+  "homepage": "https://github.com/FangHanJia/projects#readme"
+}
