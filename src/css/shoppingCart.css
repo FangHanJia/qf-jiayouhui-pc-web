@@ -75,7 +75,8 @@
 }
 
 .box .main .cart .cart-content .goodsList ul {
-  overflow: hidden;
+  height: 422px;
+  overflow-x: hidden;
 }
 
 .box .main .cart .cart-content .goodsList ul li {
@@ -177,6 +178,10 @@
 
 .box .main .cart .cart-content .goodsList ul li.bg {
   background: #FFFCE9;
+}
+
+.box .main .cart .cart-content .goodsList ul::-webkit-scrollbar {
+  width: 5px;
 }
 
 .box .main .cart .goods-handle {

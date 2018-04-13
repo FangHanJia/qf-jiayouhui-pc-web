@@ -513,6 +513,13 @@ html, body {
   right: 41px;
 }
 
+.box .header .logo .shopping-cart .goods-list .ul-box {
+  height: 320px;
+  background: #fff;
+  width: 320px;
+  overflow-x: hidden;
+}
+
 .box .header .logo .shopping-cart .goods-list .ul-box li {
   height: 68px;
   border-bottom: 1px solid #ccc;
@@ -530,6 +537,10 @@ html, body {
 .box .header .logo .shopping-cart .goods-list .ul-box li .des {
   line-height: 16px;
   font-size: 14px;
+}
+
+.box .header .logo .shopping-cart .goods-list .ul-box::-webkit-scrollbar {
+  width: 2px;
 }
 
 .box .header .logo .shopping-cart .goods-list .toCart {

@@ -333,6 +333,10 @@ require(['config'],function(){
             $floor.on('click',function(){
                  location.href = '../html/goodslist.html';
             });
+            let $imgLinks = $('#banner-focus').find('img');
+            $imgLinks.on('click',function(){
+                location.href = '../html/goodslist.html';
+            });
         }
         toList();
     });

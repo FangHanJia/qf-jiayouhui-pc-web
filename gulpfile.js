@@ -26,6 +26,17 @@ gulp.task('watch',function(){
 	gulp.watch('./src/sass/*.scss',['compileSass'])
 })
 
+// es6-->es5
+let babel = require('gulp-babel');
+
+gulp.task('es6',function(){
+	gulp.src('./src/js/*.js')
+	.pipe(babel({
+		'presets':['es2015']
+	}))
+	.pipe(gulp.dest('./src/js/es5/'))
+});
+
 
 // js压缩
 let uglify = require('gulp-uglify');
@@ -42,7 +53,7 @@ gulp.task('compressJs',function(cb){
 	// .pipe(gulp.dest('./dist/js/'))
 
 	pump([
-		gulp.src('./src/js/*.js'),
+		gulp.src('./src/js/es5/*.js'),
 
 		// 合并
 		concat('index.js'),

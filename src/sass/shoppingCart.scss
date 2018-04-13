@@ -47,7 +47,7 @@
             .goodsList{
                 overflow:hidden;
                 ul{
-                    overflow:hidden;
+                    height:422px;overflow-x:hidden;
                     li{
                         padding:20px 0;height:100px;
                         line-height:100px;
@@ -124,6 +124,7 @@
                         background:#FFFCE9;
                     }
                 }
+                ul::-webkit-scrollbar{width:5px;}
             }
         }
         .goods-handle{

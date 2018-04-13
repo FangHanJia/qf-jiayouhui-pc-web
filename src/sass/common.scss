@@ -245,6 +245,7 @@ html,body{width:100%;}
                     right:41px;
                 }
                 .ul-box{
+                    height:320px;background:#fff;width:320px;overflow-x:hidden;
                     li{
                         height:68px;border-bottom:1px solid #ccc;
                         padding:10px 10px 10px;text-align:left;
@@ -258,6 +259,7 @@ html,body{width:100%;}
                         }
                     } 
                 } 
+                .ul-box::-webkit-scrollbar{width:2px;}
                 .toCart{
                     position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
                     width:100px;height:40px;background:#dc0f50;color:#fff;
