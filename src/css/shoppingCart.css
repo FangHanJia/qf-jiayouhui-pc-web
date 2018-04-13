@@ -234,3 +234,48 @@
 .box .main .cart .goods-handle a:hover {
   color: #dc0f50;
 }
+
+.box .main .mask {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.9;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.box .main .mask .center {
+  position: absolute;
+  width: 300px;
+  height: 160px;
+  background: #fff;
+  border-radius: 10px;
+  opacity: 1;
+  text-align: center;
+  padding: 20px 60px;
+}
+
+.box .main .mask .center h3 {
+  line-height: 70px;
+  font-size: 26px;
+  margin-bottom: 40px;
+}
+
+.box .main .mask .center button {
+  width: 80px;
+  height: 40px;
+  background: #dc0f50;
+  color: #fff;
+  float: left;
+  border-radius: 10px;
+}
+
+.box .main .mask .center button:nth-of-type(2) {
+  float: right;
+}
+
+.box .main .mask .center button:hover {
+  opacity: 0.8;
+}

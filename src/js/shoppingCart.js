@@ -77,7 +77,7 @@ require(['config'],function(){
                 $goodsList.html('');
                 $goodsList.append($g_ul);
 
-                $tatolPrice.text(tatolPrice);
+                $tatolPrice.text('￥'+tatolPrice);
                         // 总数量
                 $tatolNums.text(tatolNum);
 
@@ -97,7 +97,7 @@ require(['config'],function(){
 
                     if(this.checked){
                         // 总价
-                        $tatolPrice.text(tatolPrice);
+                        $tatolPrice.text('￥'+tatolPrice);
                         // 总数量
                         $tatolNums.text(tatolNum);
                     }else{
@@ -198,6 +198,64 @@ require(['config'],function(){
                 // 读取全局cookie
                 readCookie();
                 return false;
+            });
+
+            // 删除全部商品
+            let $btnDelAll = $('#btnDelAll');
+            let $mask = $('.mask');
+            let $center = $mask.children('.center');
+            let $btnYes = $center.children('.yes');
+            let $btnNo = $center.children('.no');
+
+            // 封一个遮罩窗居中函数
+            function autoCenter(){
+                let x = (window.innerWidth-$center.outerWidth())/2;
+                let y = (window.innerHeight-$center.outerHeight())/2;
+                $center.css({
+                    left:x,
+                    top:y
+                });
+            }
+            autoCenter();
+
+            // 封一个自动适应界面的函数
+            window.onresize = function(){
+                autoCenter();
+            }
+
+            // 删除所有商品cookie事件
+            $btnDelAll.on('click',function(e){
+                // 获取全选状态
+                let isCheck = $btnAll.prop('checked');
+                if(isCheck){
+                    // 弹出遮罩窗
+                    $mask.show(function(){
+                        $center.on('click',function(e){
+                            let target = e.target || e.srcElement;
+                            if(target.className =='yes'){
+                                // 当用户点击确定时即可删除cookie
+                                Cookie.remove('goodslist','/');
+                                // 刷新界面
+                                goodsCookie();
+                                // 读取全局cookie
+                                readCookie();
+
+                                // 隐藏弹窗
+                                $mask.hide();
+                                return false;
+                            }else if(target.className =='no'){
+                                $mask.hide();
+                            }
+                        });
+                    });
+                }else{
+                    return;
+                }
+            });
+            $btnDelAll.on('mousemove',function(e){
+                // 阻止浏览器默认行为
+                e.preventDefault ? e.preventDefault() : returnValue=false;
+
             });
 
             // 选中按钮操作

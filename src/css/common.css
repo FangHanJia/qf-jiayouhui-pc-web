@@ -469,6 +469,10 @@ html, body {
   cursor: pointer;
 }
 
+.box .header .logo .shopping-cart a {
+  color: #333;
+}
+
 .box .header .logo .shopping-cart .cart-img {
   display: inline-block;
   width: 26px;

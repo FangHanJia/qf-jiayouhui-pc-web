@@ -282,7 +282,7 @@ require(['config'],function(){
                                 <i></i>
                                 <img src=${item.imgurl} />
                                 <b>${item.des}</b>
-                                <em>￥${item.price}</em>
+                                <em>￥${item.ourprice}</em>
                             </a>
                         </li> `;
             });

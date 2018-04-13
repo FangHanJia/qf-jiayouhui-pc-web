@@ -47,25 +47,12 @@ require(['config'],function(){
                 let _phone = $phone.val();
                 let _password = $password.val();
 
-                // 判断是否下次自动登陆
-                if($autoLogin.prop('checked')){
-                    // 创建时间对象
-                    let d = new Date();
-                    d.setDate(d.getDate()+7);
-
-                    // 创建cookie对象
-                    let user = {
-                        phone:_phone,
-                        password:_password
-                    }
-                    // 添加到user数组
-                    userInfo.push(user);
-                    // 将用户名和密码写入cookie
-                    document.cookie = 'userInfo='+JSON.stringify(userInfo)+';expires='+d.toUTCString()+';path=/';
-                }
+               
 
                 // 调用验证函数
-                sendInfo(_phone,_password);
+                sendInfo(_phone,_password); 
+
+
             });
             // 封一个将用户名和密码发送给后端进行验证函数
             function sendInfo(_phone,_password){
@@ -89,10 +76,30 @@ require(['config'],function(){
                                 $time.text(s+'秒');
                                 if(s==0){
                                     clearInterval(this.timer);
+
+                                    // 保存用户登陆状态
+                                    // loginStatus = true;
+                                    // 跳转到首页
                                     location.href='../index.html';
                                 }
                             },1000);
                         });
+                        // 判断是否下次自动登陆并且用户真实存在
+                        if($autoLogin.prop('checked')){
+                            // 创建时间对象
+                            let d = new Date();
+                            d.setDate(d.getDate()+7);
+
+                            // 创建cookie对象
+                            let user = {
+                                phone:_phone,
+                                password:_password
+                            }
+                            // 添加到user数组
+                            userInfo.push(user);
+                            // 将用户名和密码写入cookie
+                            document.cookie = 'userInfo='+JSON.stringify(userInfo)+';expires='+d.toUTCString()+';path=/';
+                        }
                     }else{
                         $password.addClass('curr');
                     }
@@ -104,8 +111,8 @@ require(['config'],function(){
                 // 2、将cookie写进输入框
                 // 3、发送Ajax进行用户验证
             if(userInfo.length>0){
-                let _phone    = userInfo[0].phone;
-                let _password = userInfo[0].password;
+                let _phone    = userInfo[userInfo.length-1].phone;
+                let _password = userInfo[userInfo.length-1].password;
                 console.log(_phone,_password);
                 $phone.val(_phone);
                 $password.val(_password);
