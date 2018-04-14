@@ -15,15 +15,6 @@ require(['config'],function(){
 
         // 封一个验证用户登陆函数
         function testLogin(){
-            // let userInfo;
-            // 封一个读取cookie函数
-            // testCookie();
-            // function testCookie(){
-            //     userInfo = Cookie.get('userInfo') || [];
-            //     if(typeof userInfo =='string'){
-            //         userInfo = JSON.parse(userInfo);
-            //     }
-            // }
 
             // 获取元素
             let $btnLogin = $('#btn-login');
@@ -51,8 +42,6 @@ require(['config'],function(){
                 let _phone = $phone.val();
                 let _password = $password.val();
 
-               
-
                 // 调用验证函数
                 sendInfo(_phone,_password); 
 
@@ -70,36 +59,46 @@ require(['config'],function(){
                 }
                 })
                 .then(function(data){
-                    console.log(data);
                     if(data=='success'){
-                        console.log(userInfo);
-                        if(userInfo.length>0 && userInfo[userInfo.length-1].loginstatus =='offline' ){
-                           
-                            let phone = userInfo[userInfo.length-1].phone;
-                            let idx;
-                            let has = userInfo.some(function(g,i){
-                                idx = i;
-                                return g.phone === phone;
-                            });
-                            if(has){
-                                //存在相同用户则修改为
-                                userInfo[idx].loginstatus = 'online';
-                            }
-                            document.cookie = 'userInfo='+JSON.stringify(userInfo)+';path=/';
-                            
-                        }else {
-                            // 登陆成功则存进用户名和状态
-                            let user = {
-                                phone:_phone,
-                                password:_password,
-                                loginstatus:'online'
-                            }
+                        // 使用获取登陆状态
+                        // if(userInfo.length>0 ){
+                        //     let phone = _phone;
+                        //     let idx;
+                        //     let has = userInfo.some(function(g,i){
+                        //         idx = i;
+                        //         return g.phone === phone && g.loginstatus =='offline';
+                        //     });
+                        //     if(has){
+                        //         //存在相同用户则修改为
+                        //         userInfo[idx].loginstatus = 'online';
+                        //         document.cookie = 'userInfo='+JSON.stringify(userInfo)+';path=/';
+                        //     }else {
+                        //         // 登陆成功则存进用户名和状态
+                        //         let user = {
+                        //             phone:_phone,
+                        //             password:_password,
+                        //             loginstatus:'online'
+                        //         }
 
-                            // 添加到user数组
-                            userInfo.push(user);
-                        
-                            document.cookie = 'userInfo='+JSON.stringify(userInfo)+';path=/';
-                        }
+                        //         // 添加到user数组
+                        //         userInfo.push(user);
+                            
+                        //         document.cookie = 'userInfo='+JSON.stringify(userInfo)+';path=/';
+                        //     }
+                        // }else {
+                        //         // 登陆成功则存进用户名和状态
+                        //         let user = {
+                        //             phone:_phone,
+                        //             password:_password,
+                        //             loginstatus:'online'
+                        //         }
+
+                        //         // 添加到user数组
+                        //         userInfo.push(user);
+                            
+                        //         document.cookie = 'userInfo='+JSON.stringify(userInfo)+';path=/';
+                        // }
+
                         // 弹窗操作
                         let $mask = $('.mask');     
                         let $time = $('#time');  
@@ -108,11 +107,9 @@ require(['config'],function(){
                             this.timer = setInterval(function(){
                                 s--;
                                 $time.text(s+'秒');
-                                if(s==0){
+                                if(s<=1){
                                     clearInterval(this.timer);
-
-                                    // 保存用户登陆状态
-                                    // loginStatus = true;
+                                    $mask.fadeOut();
                                     // 跳转到首页
                                     location.href='../index.html';
                                 }
