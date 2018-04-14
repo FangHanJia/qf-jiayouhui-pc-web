@@ -1,13 +1,12 @@
 // 商品cookie
 let readCookie;
 
-//用户cookie
+//用户cookie:用于获取用户信息和登陆状态
 let userCookie;
 
-// 用户登陆状态
-// let loginStatus;
-
 let type = 'index';
+
+let userInfo;
 // 封一个点击回到顶部效果函数
 function toTop(){
     let $toTop = $('#toTop');
@@ -128,15 +127,17 @@ userCookie = function(s){
     // 获取顶部元素
     let $topName = $('#top-name');
     let $signOut = $('#sign-out');
-    // 读取cookie
-    let userInfo = Cookie.get('userInfo') || [];
+    // 读取用户cookie
+    userInfo = Cookie.get('userInfo') || [];
     if(typeof userInfo =='string'){
         userInfo = JSON.parse(userInfo);
     }
-    // 判断cookie是否存在
-    if(userInfo.length>0){
-        // 用户名
-        let userName = userInfo[0].phone;
+
+
+    // 判断cookie是否存在且为登陆状态
+    if(userInfo.length>0 && userInfo[userInfo.length-1].loginstatus =='online'){
+        // 获取用户名
+        let userName = userInfo[userInfo.length-1].phone;
         if(userName){
             $topName.hide();
             let $a = $('<a></a>');
@@ -165,6 +166,39 @@ userCookie = function(s){
 
         s.next('div').show();
         s.hide();
+
+        // 将用户名和状态发送给后端
+        $.ajax({
+            url:'../api/login.php',
+            data:{
+                phone:userInfo[userInfo.length-1].phone,
+                password:userInfo[userInfo.length-1].password,
+                loginstatus:'offline'
+            }
+        })
+        .then(function(data){
+            console.log(data);
+            // 修改cookie的登陆状态为离线
+            // [{"phone":"13925650272","password":"111111","loginstatus":"online"}]
+            // let obj = {
+            //     phone:userInfo[userInfo.length-1].phone,
+            //     password:userInfo[userInfo.length-1].password,
+            //     loginstatus:'offline'
+            // }
+            // 判断商品的数量
+            let phone = userInfo[userInfo.length-1].phone;
+            let idx;
+            let has = userInfo.some(function(g,i){
+                idx = i;
+                return g.phone === phone;
+            });
+            if(has){
+                //存在相同用户则修改为离线
+                userInfo[idx].loginstatus = 'offline';
+            }
+            // 存储到cookie中
+            Cookie.set('userInfo',JSON.stringify(userInfo));
+        });
         // 删除cookie
         // Cookie.remove('userInfo');
     });

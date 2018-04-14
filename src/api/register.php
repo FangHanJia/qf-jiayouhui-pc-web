@@ -7,6 +7,9 @@
     $type     = isset($_GET['type'])? $_GET['type'] : null;
     $phone     = isset($_GET['phone'])? $_GET['phone'] : null;
     $password = isset($_GET['password'])? $_GET['password'] : null;
+    $loginstatus = isset($_GET['loginstatus'])? $_GET['loginstatus'] : null;
+
+
     // 验证用户的有效性
     // 查询数据库是否存在
     $sql = "select phone from user where phone='$phone'";
@@ -20,7 +23,7 @@
         if($type == 'reg'){
             // 加密密码
             $password = md5($password);
-            $sql = "insert into user (phone,password) values('$phone','$password')";
+            $sql = "insert into user (phone,password,loginstatus) values('$phone','$password','$loginstatus')";
             if($conn->query($sql)){
                 echo 'success';
             }else{
