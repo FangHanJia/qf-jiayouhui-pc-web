@@ -25,7 +25,21 @@
             $password = md5($password);
             $sql = "insert into user (phone,password,loginstatus) values('$phone','$password','$loginstatus')";
             if($conn->query($sql)){
-                echo 'success';
+                // 为每一个用户创建一个购物表
+                $table_name = 'user_'.$phone;
+                $sql_table = "CREATE TABLE $table_name(
+                                id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+                                guid VARCHAR(20) NOT NULL,
+                                imgurl VARCHAR(30) NOT NULL,
+                                ourprice VARCHAR(10),
+                                des VARCHAR(30) NOT NULL,
+                                qty VARCHAR(20),
+                                reg_date TIMESTAMP
+                            )";
+                // 创建表格
+                if($conn->query($sql_table)){
+                    echo 'success';
+                }
             }else{
                 echo 'fail';
             }

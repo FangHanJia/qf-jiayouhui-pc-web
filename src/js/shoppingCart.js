@@ -46,7 +46,7 @@ require(['config'],function(){
                     tatolPrice+=item.qty * Number(item.ourprice);
 
                     // 总数量
-                    tatolNum +=item.qty; 
+                    tatolNum +=Number(item.qty); 
                     // 小计
                     subTatol =item.qty * item.ourprice; 
 
@@ -55,7 +55,7 @@ require(['config'],function(){
                                     <input type="checkbox" checked/>
                                 </label>
                                 <div>
-                                    <img src=${item.img} />
+                                    <img src=${item.imgurl} />
                                     <p class="text">${item.des}</p>
                                     <p class="style"><i>颜色：共同</i><br /><i>款式：共同</i></p>
                                     <p class="ourprice"><i>${item.ourprice}</i></p>

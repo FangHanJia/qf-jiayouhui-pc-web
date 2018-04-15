@@ -7,6 +7,9 @@ let userCookie;
 let type = 'index';
 
 let userInfo;
+
+let goodslist;
+
 // 封一个点击回到顶部效果函数
 function toTop(){
     let $toTop = $('#toTop');
@@ -101,7 +104,7 @@ readCookie = function (){
     let $res = goodslist.map(function(goods){
         topQty += Number(goods.qty);
         return `<li>
-                    <img src="../${goods.img}"/>
+                    <img src="../${goods.imgurl}"/>
                     <p class="des"> ${goods.des}</p >
                     <p>${goods.ourprice}&times;${goods.qty}</p>
                 </li>`;
@@ -173,13 +176,15 @@ userCookie = function(s){
     // 封一个设置用户状态函数
     function setLine(_phone){
         let $btnOut = $signOut.find('i');
+        let $a = $signOut.find('a');
         $btnOut.on('click',function(){
-            console.log(this);
             $signOut.hide();
             $topName.show();
 
             s.next('div').show();
             s.hide();
+
+            
             
             // 将注销的状态发送给后端
             $.ajax({
@@ -190,74 +195,28 @@ userCookie = function(s){
                 }
             })
             .then(function(data){
-                console.log(data);
+
+            }); 
+            // 退出时将cookie存进数据库
+            let _text = $a.text().substr(3,11);
+            $.ajax({
+                url:'../api/header.php',
+                data:{
+                    phone:_text
+                }
+            })
+            .then(function(data){
+                if(data=='success'){
+                    // console.log(666);
+                }
             });
+            Cookie.remove('goodslist');
+            readCookie();
+
         });
     }
 
-    // 判断cookie是否存在且为登陆状态
-    // if(userInfo.length>0 && userInfo[userInfo.length-1].loginstatus =='online'){
-    //     // 获取用户名
-    //     let userName = userInfo[userInfo.length-1].phone;
-    //     if(userName){
-    //         $topName.hide();
-    //         let $a = $('<a></a>');
-    //         let $i = $('<i></i>');
-    //         $a.html('你好！'+userName);
-    //         $i.html('退出');
-    //         $i.addClass('btnOut');
-    //         $signOut.append($a);
-    //         $signOut.append($i);
-
-    //         // 显示购物车cookie
-    //         readCookie();
-    //         let $p = $('<p></p>');
-    //         $p.addClass('name');
-    //         $p.text('你好！'+userName);
-    //         s.append($p);
-    //         s.show();
-    //         s.next('div').hide();
-    //     }
-    // }
-    // // 退出登陆:
-    // let $btnOut = $signOut.find('i');
-    // $btnOut.on('click',function(){
-    //     $signOut.hide();
-    //     $topName.show();
-
-    //     s.next('div').show();
-    //     s.hide();
-
-    //     // 将用户名和状态发送给后端:cookie方法
-    //     $.ajax({
-    //         url:'../api/login.php',
-    //         data:{
-    //             phone:userInfo[userInfo.length-1].phone,
-    //             password:userInfo[userInfo.length-1].password,
-    //             loginstatus:'offline'
-    //         }
-    //     })
-    //     .then(function(data){
-    //         console.log(data);
-    //         // 修改cookie的登陆状态为离线
-           
-    //         let phone = userInfo[userInfo.length-1].phone;
-    //         let idx;
-    //         let has = userInfo.some(function(g,i){
-    //             idx = i;
-    //             return g.phone === phone;
-    //         });
-    //         if(has){
-    //             //存在相同用户则修改为离线
-    //             userInfo[idx].loginstatus = 'offline';
-    //         }
-    //         // 存储到cookie中
-    //         // Cookie.set('userInfo',JSON.stringify(userInfo));
-    //         document.cookie = 'userInfo='+JSON.stringify(userInfo)+';path=/';
-    //     });
-    //     // 删除cookie
-    //     // Cookie.remove('userInfo');
-    // });
+    
 
    }
 }

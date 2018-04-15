@@ -49,55 +49,18 @@ require(['config'],function(){
             });
             // 封一个将用户名和密码发送给后端进行验证函数
             function sendInfo(_phone,_password){
+                // 验证登陆
                 $.ajax({
-                url:'../api/login.php',
-                data:{
-                    phone:_phone,
-                    password:_password,
-                    // 将登陆状态发送给后端
-                    loginstatus:'online'
-                }
+                    url:'../api/login.php',
+                    data:{
+                        phone:_phone,
+                        password:_password,
+                        // 将登陆状态发送给后端
+                        loginstatus:'online'
+                    }
                 })
                 .then(function(data){
                     if(data=='success'){
-                        // 使用获取登陆状态
-                        // if(userInfo.length>0 ){
-                        //     let phone = _phone;
-                        //     let idx;
-                        //     let has = userInfo.some(function(g,i){
-                        //         idx = i;
-                        //         return g.phone === phone && g.loginstatus =='offline';
-                        //     });
-                        //     if(has){
-                        //         //存在相同用户则修改为
-                        //         userInfo[idx].loginstatus = 'online';
-                        //         document.cookie = 'userInfo='+JSON.stringify(userInfo)+';path=/';
-                        //     }else {
-                        //         // 登陆成功则存进用户名和状态
-                        //         let user = {
-                        //             phone:_phone,
-                        //             password:_password,
-                        //             loginstatus:'online'
-                        //         }
-
-                        //         // 添加到user数组
-                        //         userInfo.push(user);
-                            
-                        //         document.cookie = 'userInfo='+JSON.stringify(userInfo)+';path=/';
-                        //     }
-                        // }else {
-                        //         // 登陆成功则存进用户名和状态
-                        //         let user = {
-                        //             phone:_phone,
-                        //             password:_password,
-                        //             loginstatus:'online'
-                        //         }
-
-                        //         // 添加到user数组
-                        //         userInfo.push(user);
-                            
-                        //         document.cookie = 'userInfo='+JSON.stringify(userInfo)+';path=/';
-                        // }
 
                         // 弹窗操作
                         let $mask = $('.mask');     
@@ -115,6 +78,21 @@ require(['config'],function(){
                                 }
                             },1000);
                         });
+
+                        // 获取所有数据，并写进cookie
+                        $.ajax({
+                            url:'../api/login.php',
+                            data:{
+                                type:'getdata',
+                                phone:_phone
+                            }
+                        })
+                        .then(function(data){
+                            let res = JSON.parse(data);
+                            // 写进cookie
+                            document.cookie = 'goodslist='+JSON.stringify(res)+';path=/';
+                        });
+
                         // 判断是否下次自动登陆并且用户真实存在
                         // if($autoLogin.prop('checked')){
                         //     // 创建时间对象
@@ -137,6 +115,9 @@ require(['config'],function(){
                         $password.addClass('curr');
                     }
                 });
+
+
+                
             }
 
             // 自动登陆

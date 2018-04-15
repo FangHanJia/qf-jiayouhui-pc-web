@@ -7,6 +7,7 @@
     $password = isset($_GET['password']) ? $_GET['password'] : null;
     $loginstatus = isset($_GET['loginstatus']) ? $_GET['loginstatus'] : null;
     $getStatus = isset($_GET['getStatus']) ? $_GET['getStatus'] : null;
+    $type = isset($_GET['type']) ? $_GET['type'] : null;
 
 
     // 将密码加密位md5进行验证
@@ -21,8 +22,6 @@
         if($result_status){
             echo 'success';
         }
-    }else if($getStatus ==null){
-        return;
     }else if($getStatus == 'online'){
         $sql_get = "select * from user where loginstatus='$getStatus'";
         $result_get = $conn->query($sql_get);
@@ -35,14 +34,14 @@
         if($result_off){
             echo 'success';
         }
+    }else if($type == 'getdata'){
+        $table = 'user_'.$phone;
+        $sql_all = "select * from $table";
+        $result_all = $conn->query($sql_all);
+        $res_all = $result_all->fetch_all(MYSQLI_ASSOC);
+        echo json_encode($res_all,JSON_UNESCAPED_UNICODE);
     }else{
         echo 'fail';
     }
-    
-
-
-
-
-   
     
 ?>

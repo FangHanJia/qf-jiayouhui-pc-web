@@ -112,9 +112,11 @@ require(['config'],function(){
 
                 // 将图片传给飞入购物车效果函数
                 fly2Cart(this,this.x,this.y,$onUrl,cookieObj);
+
+                
             });
         }
-        // 封一个添加到购物车函数
+        // 封一个添加到购物车函数:使用cookie
         function add2Cart(obj){
             // 写入先读取
             let goodslist = Cookie.get('goodslist') || [];
@@ -136,7 +138,7 @@ require(['config'],function(){
                 //将数据添加到一个对象中
                 let good = {
                     guid:obj.id,
-                    img:obj.imgurl,
+                    imgurl:obj.imgurl,
                     saleprice:obj.saleprice,
                     ourprice:obj.ourprice,
                     des:obj.des,
@@ -147,6 +149,7 @@ require(['config'],function(){
             // 存储到cookie中
             document.cookie = 'goodslist='+JSON.stringify(goodslist)+';path=/';
             readCookie();
+            
         }
 
         // 封一个飞入购物车效果函数
@@ -165,7 +168,6 @@ require(['config'],function(){
             });
             $('body').append($flyImg);
             $flyImg.animate({top:60,left:1100,width:50,height:50,opacity:0.5},1500);
-            console.log($flyImg);
             setTimeout(function(){
                 $flyImg.remove();
                 // 将数据传给购物车函数
