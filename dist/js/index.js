@@ -418,7 +418,7 @@ require(['config'], function () {
                 fly2Cart(this, this.x, this.y, $onUrl, cookieObj);
             });
         }
-        // 封一个添加到购物车函数
+        // 封一个添加到购物车函数:使用cookie
         function add2Cart(obj) {
             // 写入先读取
             var goodslist = Cookie.get('goodslist') || [];
@@ -440,7 +440,7 @@ require(['config'], function () {
                 //将数据添加到一个对象中
                 var good = {
                     guid: obj.id,
-                    img: obj.imgurl,
+                    imgurl: obj.imgurl,
                     saleprice: obj.saleprice,
                     ourprice: obj.ourprice,
                     des: obj.des,
@@ -469,7 +469,6 @@ require(['config'], function () {
             });
             $('body').append($flyImg);
             $flyImg.animate({ top: 60, left: 1100, width: 50, height: 50, opacity: 0.5 }, 1500);
-            console.log($flyImg);
             setTimeout(function () {
                 $flyImg.remove();
                 // 将数据传给购物车函数
@@ -873,13 +872,15 @@ require(['config'], function () {
 // 商品cookie
 var readCookie = void 0;
 
-//用户cookie
+//用户cookie:用于获取用户信息和登陆状态
 var userCookie = void 0;
 
-// 用户登陆状态
-// let loginStatus;
-
 var type = 'index';
+
+var userInfo = void 0;
+
+var goodslist = void 0;
+
 // 封一个点击回到顶部效果函数
 function toTop() {
     var $toTop = $('#toTop');
@@ -972,7 +973,7 @@ readCookie = function readCookie() {
     var topQty = 0;
     var $res = goodslist.map(function (goods) {
         topQty += Number(goods.qty);
-        return '<li>\n                    <img src="../' + goods.img + '"/>\n                    <p class="des"> ' + goods.des + '</p >\n                    <p>' + goods.ourprice + '&times;' + goods.qty + '</p>\n                </li>';
+        return '<li>\n                    <img src="../' + goods.imgurl + '"/>\n                    <p class="des"> ' + goods.des + '</p >\n                    <p>' + goods.ourprice + '&times;' + goods.qty + '</p>\n                </li>';
     });
     $goodsNums.text(topQty);
     $topCount.text(topQty);
@@ -992,49 +993,85 @@ var timer = setInterval(function () {
 // 封一个读取用户cookie函数
 userCookie = function userCookie(s) {
     if (s) {
+        // 封一个获取用户登陆状态函数:ajax
+        var getLine = function getLine() {
+            $.ajax({
+                url: '../api/login.php',
+                data: {
+                    getStatus: 'online'
+                }
+            }).then(function (data) {
+                var res = JSON.parse(data);
+                if (res.length != 0) {
+                    var _phone = res[0].phone;
+                    $topName.hide();
+                    var $a = $('<a></a>');
+                    var $i = $('<i></i>');
+                    $a.html('你好！' + _phone);
+                    $i.html('退出');
+                    $i.addClass('btnOut');
+                    $signOut.append($a);
+                    $signOut.append($i);
+
+                    // 显示购物车cookie
+                    readCookie();
+                    var $p = $('<p></p>');
+                    $p.addClass('name');
+                    $p.text('你好！' + _phone);
+                    s.append($p);
+                    s.show();
+                    s.next('div').hide();
+
+                    setLine(_phone);
+                }
+            });
+        };
+
+        // 封一个设置用户状态函数
+        var setLine = function setLine(_phone) {
+            var $btnOut = $signOut.find('i');
+            var $a = $signOut.find('a');
+            $btnOut.on('click', function () {
+                $signOut.hide();
+                $topName.show();
+
+                s.next('div').show();
+                s.hide();
+
+                // 将注销的状态发送给后端
+                $.ajax({
+                    url: '../api/login.php',
+                    data: {
+                        phone: _phone,
+                        getStatus: 'offline'
+                    }
+                }).then(function (data) {});
+                // 退出时将cookie存进数据库
+                var _text = $a.text().substr(3, 11);
+                $.ajax({
+                    url: '../api/header.php',
+                    data: {
+                        phone: _text
+                    }
+                }).then(function (data) {
+                    if (data == 'success') {
+                        // console.log(666);
+                    }
+                });
+                Cookie.remove('goodslist');
+                readCookie();
+            });
+        };
+
         // 获取顶部元素
         var $topName = $('#top-name');
         var $signOut = $('#sign-out');
-        // 读取cookie
-        var userInfo = Cookie.get('userInfo') || [];
+        // 读取用户cookie
+        userInfo = Cookie.get('userInfo') || [];
         if (typeof userInfo == 'string') {
             userInfo = JSON.parse(userInfo);
         }
-        // 判断cookie是否存在
-        if (userInfo.length > 0) {
-            // 用户名
-            var userName = userInfo[0].phone;
-            if (userName) {
-                $topName.hide();
-                var $a = $('<a></a>');
-                var $i = $('<i></i>');
-                $a.html('你好！' + userName);
-                $i.html('退出');
-                $i.addClass('btnOut');
-                $signOut.append($a);
-                $signOut.append($i);
-
-                // 显示购物车cookie
-                readCookie();
-                var $p = $('<p></p>');
-                $p.addClass('name');
-                $p.text('你好！' + userName);
-                s.append($p);
-                s.show();
-                s.next('div').hide();
-            }
-        }
-        // 退出登陆:
-        var $btnOut = $signOut.find('i');
-        $btnOut.on('click', function () {
-            $signOut.hide();
-            $topName.show();
-
-            s.next('div').show();
-            s.hide();
-            // 删除cookie
-            // Cookie.remove('userInfo');
-        });
+        getLine();
     }
 };
 'use strict';
@@ -1328,11 +1365,6 @@ require(['config'], function () {
 
         // 封一个验证用户登陆函数
         function testLogin() {
-            // 读取cookie
-            var userInfo = Cookie.get('userInfo') || [];
-            if (typeof userInfo == 'string') {
-                userInfo = JSON.parse(userInfo);
-            }
 
             // 获取元素
             var $btnLogin = $('#btn-login');
@@ -1365,15 +1397,18 @@ require(['config'], function () {
             });
             // 封一个将用户名和密码发送给后端进行验证函数
             function sendInfo(_phone, _password) {
+                // 验证登陆
                 $.ajax({
                     url: '../api/login.php',
                     data: {
                         phone: _phone,
-                        password: _password
+                        password: _password,
+                        // 将登陆状态发送给后端
+                        loginstatus: 'online'
                     }
                 }).then(function (data) {
-                    console.log(data);
                     if (data == 'success') {
+
                         // 弹窗操作
                         var $mask = $('.mask');
                         var $time = $('#time');
@@ -1382,31 +1417,46 @@ require(['config'], function () {
                             this.timer = setInterval(function () {
                                 s--;
                                 $time.text(s + '秒');
-                                if (s == 0) {
+                                if (s <= 1) {
                                     clearInterval(this.timer);
-
-                                    // 保存用户登陆状态
-                                    // loginStatus = true;
+                                    $mask.fadeOut();
                                     // 跳转到首页
                                     location.href = '../index.html';
                                 }
                             }, 1000);
                         });
-                        // 判断是否下次自动登陆并且用户真实存在
-                        if ($autoLogin.prop('checked')) {
-                            // 创建时间对象
-                            var d = new Date();
-                            d.setDate(d.getDate() + 7);
 
-                            // 创建cookie对象
-                            var user = {
-                                phone: _phone,
-                                password: _password
-                                // 添加到user数组
-                            };userInfo.push(user);
-                            // 将用户名和密码写入cookie
-                            document.cookie = 'userInfo=' + JSON.stringify(userInfo) + ';expires=' + d.toUTCString() + ';path=/';
-                        }
+                        // 获取所有数据，并写进cookie
+                        $.ajax({
+                            url: '../api/login.php',
+                            data: {
+                                type: 'getdata',
+                                phone: _phone
+                            }
+                        }).then(function (data) {
+                            var res = JSON.parse(data);
+                            // 写进cookie
+                            document.cookie = 'goodslist=' + JSON.stringify(res) + ';path=/';
+                        });
+
+                        // 判断是否下次自动登陆并且用户真实存在
+                        // if($autoLogin.prop('checked')){
+                        //     // 创建时间对象
+                        //     let d = new Date();
+                        //     d.setDate(d.getDate()+7);
+
+                        //     // 创建cookie对象
+                        //     let user = {
+                        //         phone:_phone,
+                        //         password:_password,
+                        //         // 登陆成功时更换状态
+                        //         loginstatus:'online'
+                        //     }
+                        //     // 添加到user数组
+                        //     userInfo.push(user);
+                        //     // 将用户名和密码写入cookie
+                        //     document.cookie = 'userInfo='+JSON.stringify(userInfo)+';expires='+d.toUTCString()+';path=/';
+                        // }
                     } else {
                         $password.addClass('curr');
                     }
@@ -1417,15 +1467,15 @@ require(['config'], function () {
             // 1、读取cookie
             // 2、将cookie写进输入框
             // 3、发送Ajax进行用户验证
-            if (userInfo.length > 0) {
-                var _phone = userInfo[userInfo.length - 1].phone;
-                var _password = userInfo[userInfo.length - 1].password;
-                console.log(_phone, _password);
-                $phone.val(_phone);
-                $password.val(_password);
-                // 调用验证函数
-                sendInfo(_phone, _password);
-            }
+            // if(userInfo.length>0){
+            //     let _phone    = userInfo[userInfo.length-1].phone;
+            //     let _password = userInfo[userInfo.length-1].password;
+            //     console.log(_phone,_password);
+            //     $phone.val(_phone);
+            //     $password.val(_password);
+            //     // 调用验证函数
+            //     sendInfo(_phone,_password);
+            // }
         }
         testLogin();
 
@@ -1588,7 +1638,9 @@ require(['config'], function () {
                 data: {
                     type: 'reg',
                     phone: _phoneNum,
-                    password: _pass1
+                    password: _pass1,
+                    // 默认离线状态
+                    loginstatus: 'offline'
                 }
             }).then(function (data) {
                 console.log(data);
@@ -3803,11 +3855,11 @@ require(['config'], function () {
                     tatolPrice += item.qty * Number(item.ourprice);
 
                     // 总数量
-                    tatolNum += item.qty;
+                    tatolNum += Number(item.qty);
                     // 小计
                     subTatol = item.qty * item.ourprice;
 
-                    return '<li id=' + item.guid + '>\n                                <label for="">\n                                    <input type="checkbox" checked/>\n                                </label>\n                                <div>\n                                    <img src=' + item.img + ' />\n                                    <p class="text">' + item.des + '</p>\n                                    <p class="style"><i>\u989C\u8272\uFF1A\u5171\u540C</i><br /><i>\u6B3E\u5F0F\uFF1A\u5171\u540C</i></p>\n                                    <p class="ourprice"><i>' + item.ourprice + '</i></p>\n                                    <p class="num">\n                                        <label for="">\n                                            <i class="btn-reduce">-</i>\n                                            <input type="text" value=' + item.qty + '\n                                             class="goods-num"/>\n                                            <i class="btn-add">+</i>\n                                        </label>\n                                    </p>\n                                    <p class="xiaoji">\uFFE5' + subTatol + '</p>\n                                    <span class="btnDel">\u5220\u9664</span>\n                                </div>\n                            </li>';
+                    return '<li id=' + item.guid + '>\n                                <label for="">\n                                    <input type="checkbox" checked/>\n                                </label>\n                                <div>\n                                    <img src=' + item.imgurl + ' />\n                                    <p class="text">' + item.des + '</p>\n                                    <p class="style"><i>\u989C\u8272\uFF1A\u5171\u540C</i><br /><i>\u6B3E\u5F0F\uFF1A\u5171\u540C</i></p>\n                                    <p class="ourprice"><i>' + item.ourprice + '</i></p>\n                                    <p class="num">\n                                        <label for="">\n                                            <i class="btn-reduce">-</i>\n                                            <input type="text" value=' + item.qty + '\n                                             class="goods-num"/>\n                                            <i class="btn-add">+</i>\n                                        </label>\n                                    </p>\n                                    <p class="xiaoji">\uFFE5' + subTatol + '</p>\n                                    <span class="btnDel">\u5220\u9664</span>\n                                </div>\n                            </li>';
                 });
 
                 $g_ul.append($res);

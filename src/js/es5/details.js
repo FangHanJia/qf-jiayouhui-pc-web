@@ -111,7 +111,7 @@ require(['config'], function () {
                 fly2Cart(this, this.x, this.y, $onUrl, cookieObj);
             });
         }
-        // 封一个添加到购物车函数
+        // 封一个添加到购物车函数:使用cookie
         function add2Cart(obj) {
             // 写入先读取
             var goodslist = Cookie.get('goodslist') || [];
@@ -133,7 +133,7 @@ require(['config'], function () {
                 //将数据添加到一个对象中
                 var good = {
                     guid: obj.id,
-                    img: obj.imgurl,
+                    imgurl: obj.imgurl,
                     saleprice: obj.saleprice,
                     ourprice: obj.ourprice,
                     des: obj.des,
@@ -162,7 +162,6 @@ require(['config'], function () {
             });
             $('body').append($flyImg);
             $flyImg.animate({ top: 60, left: 1100, width: 50, height: 50, opacity: 0.5 }, 1500);
-            console.log($flyImg);
             setTimeout(function () {
                 $flyImg.remove();
                 // 将数据传给购物车函数

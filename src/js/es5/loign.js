@@ -17,11 +17,6 @@ require(['config'], function () {
 
         // 封一个验证用户登陆函数
         function testLogin() {
-            // 读取cookie
-            var userInfo = Cookie.get('userInfo') || [];
-            if (typeof userInfo == 'string') {
-                userInfo = JSON.parse(userInfo);
-            }
 
             // 获取元素
             var $btnLogin = $('#btn-login');
@@ -54,15 +49,18 @@ require(['config'], function () {
             });
             // 封一个将用户名和密码发送给后端进行验证函数
             function sendInfo(_phone, _password) {
+                // 验证登陆
                 $.ajax({
                     url: '../api/login.php',
                     data: {
                         phone: _phone,
-                        password: _password
+                        password: _password,
+                        // 将登陆状态发送给后端
+                        loginstatus: 'online'
                     }
                 }).then(function (data) {
-                    console.log(data);
                     if (data == 'success') {
+
                         // 弹窗操作
                         var $mask = $('.mask');
                         var $time = $('#time');
@@ -71,31 +69,46 @@ require(['config'], function () {
                             this.timer = setInterval(function () {
                                 s--;
                                 $time.text(s + '秒');
-                                if (s == 0) {
+                                if (s <= 1) {
                                     clearInterval(this.timer);
-
-                                    // 保存用户登陆状态
-                                    // loginStatus = true;
+                                    $mask.fadeOut();
                                     // 跳转到首页
                                     location.href = '../index.html';
                                 }
                             }, 1000);
                         });
-                        // 判断是否下次自动登陆并且用户真实存在
-                        if ($autoLogin.prop('checked')) {
-                            // 创建时间对象
-                            var d = new Date();
-                            d.setDate(d.getDate() + 7);
 
-                            // 创建cookie对象
-                            var user = {
-                                phone: _phone,
-                                password: _password
-                                // 添加到user数组
-                            };userInfo.push(user);
-                            // 将用户名和密码写入cookie
-                            document.cookie = 'userInfo=' + JSON.stringify(userInfo) + ';expires=' + d.toUTCString() + ';path=/';
-                        }
+                        // 获取所有数据，并写进cookie
+                        $.ajax({
+                            url: '../api/login.php',
+                            data: {
+                                type: 'getdata',
+                                phone: _phone
+                            }
+                        }).then(function (data) {
+                            var res = JSON.parse(data);
+                            // 写进cookie
+                            document.cookie = 'goodslist=' + JSON.stringify(res) + ';path=/';
+                        });
+
+                        // 判断是否下次自动登陆并且用户真实存在
+                        // if($autoLogin.prop('checked')){
+                        //     // 创建时间对象
+                        //     let d = new Date();
+                        //     d.setDate(d.getDate()+7);
+
+                        //     // 创建cookie对象
+                        //     let user = {
+                        //         phone:_phone,
+                        //         password:_password,
+                        //         // 登陆成功时更换状态
+                        //         loginstatus:'online'
+                        //     }
+                        //     // 添加到user数组
+                        //     userInfo.push(user);
+                        //     // 将用户名和密码写入cookie
+                        //     document.cookie = 'userInfo='+JSON.stringify(userInfo)+';expires='+d.toUTCString()+';path=/';
+                        // }
                     } else {
                         $password.addClass('curr');
                     }
@@ -106,15 +119,15 @@ require(['config'], function () {
             // 1、读取cookie
             // 2、将cookie写进输入框
             // 3、发送Ajax进行用户验证
-            if (userInfo.length > 0) {
-                var _phone = userInfo[userInfo.length - 1].phone;
-                var _password = userInfo[userInfo.length - 1].password;
-                console.log(_phone, _password);
-                $phone.val(_phone);
-                $password.val(_password);
-                // 调用验证函数
-                sendInfo(_phone, _password);
-            }
+            // if(userInfo.length>0){
+            //     let _phone    = userInfo[userInfo.length-1].phone;
+            //     let _password = userInfo[userInfo.length-1].password;
+            //     console.log(_phone,_password);
+            //     $phone.val(_phone);
+            //     $password.val(_password);
+            //     // 调用验证函数
+            //     sendInfo(_phone,_password);
+            // }
         }
         testLogin();
 

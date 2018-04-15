@@ -137,7 +137,9 @@ require(['config'], function () {
                 data: {
                     type: 'reg',
                     phone: _phoneNum,
-                    password: _pass1
+                    password: _pass1,
+                    // 默认离线状态
+                    loginstatus: 'offline'
                 }
             }).then(function (data) {
                 console.log(data);
