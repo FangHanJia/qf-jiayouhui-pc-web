@@ -213,6 +213,9 @@ userCookie = function(s){
             Cookie.remove('goodslist');
             readCookie();
 
+            // 跳转到登陆界面
+            location.href = '../html/login.html'; 
+
         });
     }
 
