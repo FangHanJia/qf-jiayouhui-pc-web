@@ -1058,8 +1058,11 @@ userCookie = function userCookie(s) {
                         // console.log(666);
                     }
                 });
-                Cookie.remove('goodslist');
+                Cookie.remove('goodslist', '/');
                 readCookie();
+
+                // 跳转到登陆界面
+                location.href = '../html/login.html';
             });
         };
 
